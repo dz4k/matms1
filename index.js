@@ -7,22 +7,18 @@ const server = app.listen(3000)
 
 app.use(express.static("home"))
 
+function typeset(math, callback) {
+  mathjax.typeset({
+     math: req.query.math,
+     format: "AsciiMath",
+     png: true
+   }).then(data => callback(toImg(data.png)))
+}
 function toImg(a) {
   return "<img src=\""+data.png+"\">"
 
 }
-mathjax.typeset({
-  math: "a/b^4",
-  format: "AsciiMath",
-  png: true
-}).then(data => console.log(data))
 
 app.get("/render/", (req, res) => {
-  mathjax.typeset({
-    math: req.query.math,
-    format: "AsciiMath",
-    png: true
-  }).then(data => {
-    res.send(toImg(data.png))
-  })
+  typeset(req.query.math, res.send)
 })
