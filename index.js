@@ -5,7 +5,7 @@ console.log("[]Starting")
 const app = express()
 const server = app.listen(3000)
 
-app.use(express.static("home"))
+app.use(express.static("public"))
 
 function typeset(math, callback) {
   mathjax.typeset({
@@ -14,6 +14,7 @@ function typeset(math, callback) {
      png: true
    }).then(data => callback(toImg(data.png)))
 }
+
 function toImg(a) {
   return "<img src=\""+data.png+"\">"
 
