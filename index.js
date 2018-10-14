@@ -20,7 +20,7 @@ function typeset(math, callback) {
 }
 
 function toImg(a) {
-  return "<img src=\""+data.png+"\">"
+  return "<img src=\""+a+"\">"
 
 }
 
