@@ -7,13 +7,13 @@ const server = app.listen(3000)
 
 app.get("/", (req, res) => 
   res.sendFile(
-    __dirname+"public/index.html"
+    __dirname+"/public/index.html"
   )
 )
 
 function typeset(math, callback) {
   mathjax.typeset({
-     math: req.query.math,
+     math: math,
      format: "AsciiMath",
      png: true
    }).then(data => callback(toImg(data.png)))
@@ -25,5 +25,5 @@ function toImg(a) {
 }
 
 app.get("/render/", (req, res) => {
-  typeset(req.query.math, res.send)
+  typeset(req.query.math, a =>res.send(a))
 })
