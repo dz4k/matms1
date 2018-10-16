@@ -15,7 +15,8 @@ function typeset(math, callback) {
   mathjax.typeset({
      math: math,
      format: "AsciiMath",
-     png: true
+     png: true,
+    scale: 5
    }).then(data => callback(toImg(data.png)))
 }
 
