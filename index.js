@@ -10,17 +10,15 @@ const server = app.listen(3000)
 app.set('views', './views')
 app.set('view engine', 'pug')
 
-app.use(express.static("wwwroot"))
-
 app.get("/", (req, res) => 
   res.render(
-    __dirname+"/views/index.pug", {}
+    __dirname+"/views/index.html"
   )
 )
 
 app.get("/soru/", (req, res) => 
   res.render(
-    __dirname+"/views/soru.pug",
+    __dirname+"/views/soru.html",
     {
       soru: req.query.id,
     }
