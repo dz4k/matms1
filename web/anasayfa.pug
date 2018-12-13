@@ -3,17 +3,21 @@ html
   head
     script(type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML")
     meta(name="viewport" content="width=device-width, initial-scale=1")
+    link(rel="stylesheet" href="/anasayfa.css")
 - 
+  // mock questions
   let questions = [
     { 
       author: "some_guy", 
       content: "inverse of `f(x)= a^x`?",
-      resCount: 3
+      resCount: 3,
+      url: "/soru?id=0"
     },
     {
       author: "loremipsum",
       content: "`fx = 2x + 1`, `(f @ g)x = 3x -2`, `gx=?`",
-      resCount: 4
+      resCount: 4,
+      url: "/soru?id=1"
     }
   ]
 
