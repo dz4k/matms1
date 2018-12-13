@@ -1,5 +1,5 @@
 const express = require("express")
-const mathjax = require("mathjax-node-svg2png")
+
 
 // TODO: everything
 
