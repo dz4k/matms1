@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css?family=Unna');
+#app {
+  display: grid;
+  grid-template-columns: 20% 60% 20%;
+  grid-template-areas:
+    ". header    ."
+    ". search    ."
+    ". container .";
+}
+@media screen and (max-width: 500px) {
+  #app {
+    grid-template-columns: 0% 100% 0%;
+  }
+}
+* {
+  font-family: "Unna";
+  box-sizing: border-box;
+}
+header {
+  grid-area: header;
+}
+header > h1 {
+  text-align: center;
+}
+#container {
+  grid-area: container;
+}
+
+.question {
+  box-shadow: 0 2px 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+.question > a {
+  font-size: 2.5rem;
+}
+#ask {
+  grid-area: search;
+  height: 3em;
+  width: 100%;
+  padding-left: 10px;
+  font-size: 16px;
+  margin-bottom: 10px;
+  background-color: lightgray;
+  border-radius: 5px;
+  border: none;
+  resize: none;
+}
+#askform:focus-within::before {
+  
+}
+
+
+/*
+.mjx-chtml {
+  background-color:gray;
+}
+*/
