@@ -6,20 +6,20 @@ html
     link(rel="stylesheet" href="/styles.css")
 script(type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML")
 
-- 
-  let sorular = [
-    { 
-      yazan: "birisi", 
-      icerik: "`f(x)= a^x` fonksiyonunun tersi nedir?",
-      cevapSayisi: 3
-    },
-    {
-      yazan: "loremipsum",
-      icerik: "`fx = 2x + 1`, `(f @ g)x = 3x -2`, `gx=?`",
-      cevapSayisi: 4
-    }
-  ]
-  body
+    - 
+      let sorular = [
+        { 
+          yazan: "birisi", 
+          icerik: "`f(x)= a^x` fonksiyonunun tersi nedir?",
+          cevapSayisi: 3
+        },
+        {
+          yazan: "loremipsum",
+          icerik: "`fx = 2x + 1`, `(f @ g)x = 3x -2`, `gx=?`",
+          cevapSayisi: 4
+        }
+      ]
+body
     #app
       header
         h1 MatMS
