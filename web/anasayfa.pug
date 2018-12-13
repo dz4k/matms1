@@ -1,5 +1,8 @@
-script(type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML")
-
+doctype html
+html
+  head
+    script(type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
 - 
   let questions = [
     { 
@@ -14,16 +17,16 @@ script(type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/
     }
   ]
 
-#app
-  header
-    h1 MtMS
-    form#askform
-      input#ask(placeholder="Soru sor..." multiline)
-  #container
-    #questions
-      for q in questions
-        .question
-          a(href=q.url)= q.content
-          br
-          span by #{q.author}<em> #{q.resCount} responses </em>
+  #app
+    header
+      h1 MtMS
+      form#askform
+        input#ask(placeholder="Soru sor..." multiline)
+    #container
+      #questions
+        for q in questions
+          .question
+            a(href=q.url)= q.content
+            br
+            span by #{q.author}<em> #{q.resCount} responses </em>
           
