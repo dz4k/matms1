@@ -1,12 +1,13 @@
-const express = require("express")
+const express = require("express"),
+      mongoose = require('mongoose')
 
+// Veritabanı
 
-const mongoose = require('mongoose')
 mongoose.connect('mongodb://localhost/test')
 const db = mongoose.connection
 db.on('error', console.error.bind(console, 'connection error:'))
 db.once('open', function() {
-  // we're connected!
+  // bağlantı sağlandı!
 })
 const msgSchema =  new mongoose.Schema({
   yazan: String, 
@@ -17,14 +18,16 @@ const msgSchema =  new mongoose.Schema({
 } )
 const Msg = mongoose.model('Msg', msgSchema)
 
+// Sunucu
 
-console.log("[]Starting")
 const app = express()
 const server = app.listen(3000)
 
 app.use(express.static('wwwroot'))
 app.set('views', './views')
 app.set('view engine', 'pug')
+app.use(express.bodyParser())
+app.use(express.session({}))
 
 app.get("/", (req, res) => 
   res.render(
