@@ -3,12 +3,16 @@ const express = require("express"),
 
 // Veritabanı
 
+function veritabani(mongoose) {
 mongoose.connect('mongodb://localhost/test')
 const db = mongoose.connection
 db.on('error', console.error.bind(console, 'connection error:'))
 db.once('open', function() {
   // bağlantı sağlandı!
 })
+return db
+}
+
 const msgSchema =  new mongoose.Schema({
   yazan: String, 
   icerik: String, 
@@ -20,6 +24,7 @@ const Msg = mongoose.model('Msg', msgSchema)
 
 // Sunucu
 
+function sunucu(db, views) {
 const app = express()
 const server = app.listen(3000)
 
@@ -46,3 +51,8 @@ app.get("/soru/", (req, res) =>
 app.post("soru", (req, res) => {
   
 } )
+return app
+}
+
+const db = veritabani(mongoose)
+const app = sunucu(db, [/* TODO: parameterize */])
