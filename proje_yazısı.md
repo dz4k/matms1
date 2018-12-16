@@ -31,6 +31,9 @@ yayınlanmıştır. Web uygulaması veya API geliştirmek için kullanılabilir.
 
 ### 1.5. MathJax
 
+MathJax, matematiksel ifadelerin çizimi için bir JavaScript kütüphanesidir. Girdi olarak TeX, MathML ve AsciiMath; çıktı 
+olarak HTML-CSS, SVG ve MathML formatlarını destekler. 
+
 ### 1.6. Pug
 
 Pug, HTML için bir önişlemcidir (İng. _preprocessor_). Sunucu veya istemci tarafından derlenebilir. Gömülü JavaScript ifadelerini 
@@ -40,6 +43,20 @@ kısa ve okunaklı olması için tasarlanmıştır.
 ## 2. Yöntem
 
 ### 2.1 Proje Yapım Basamakları
+
+__a. Veritabanı oluşturulması__
+
+__b. Matematik yazımı__
+
+b.1. MathJax kütüphanesinin kurulumu
+b.2. MathJax'in Türkçeleştirilmesi
+b.3. Matematik yazımı için arayüz kodlanması
+
+__c. Web sitesi__
+
+c.1. Kullanıcı arayüzü yapımı
+c.2. Dinamik içeriğin küllanıcıya sunumu
+c.3. Soru sormak ve cevap vermek için yol oluşturulması
 
 ## 3. Bulgular ve Gerçekleşme
 
