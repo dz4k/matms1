@@ -50,7 +50,7 @@ kısa ve okunaklı olması için tasarlanmıştır.
 Kullanıcıları doğru cevap vermeye motive etmek için puan ve/veya rütbe sistemi eklenebilir. Doğru cevap veren öğrencilere ödül ve 
 teşekkür amaçlı puan verilebilir.
 
-Farklı sınıflar için ayrı odalar oluşturulabilir. Böyleve kullanıcılar kendi seviyelerinde sorulara bakabilir. Benzer şekilde 
+Farklı sınıflar için ayrı odalar oluşturulabilir. Böylece kullanıcılar kendi seviyelerinde sorulara bakabilir. Benzer şekilde 
 matematiğin farklı alt dalları ve konuları için de odalar yapılabilir.
 
 Yapılan uygulama okullarda kullanılıp öğrencilerin kendi öğretmenleri ve sınıf arkadaşlarından yardım alması sağlanabilir.
