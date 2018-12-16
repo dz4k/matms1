@@ -26,6 +26,9 @@ defteridir (İng. _registry_).
 
 ### 1.3. Express.js
 
+Express.js veya Express, Node.js için özgür açık kaynak kodlu web çatısıdır. 16 Kasım 2010 tarihinde 	TJ Holowaychuk tarafından
+yayınlanmıştır. Web uygulaması veya API geliştirmek için kullanılabilir. Diğer pek çok çatının altyapısını oluşturur. 
+
 ### 1.5. MathJax
 
 ### 1.6. Pug
@@ -63,3 +66,5 @@ Durumlarının Değerlendirilmesi. _Maltepe Üniversitesi Hemşirelik Bilim ve S
 Senkpiel, J., (2016). Node v7.2.0 (Current). 16 Aralık 2018 tarihinde erişildi. [https://nodejs.org/en/blog/release/v7.2.0/]
 
 _About npm_. NPM. 16 Aralık 2018 tarihinde erişildi. [https://www.npmjs.com/about].
+
+Vorbach,P., npm-stat: download statistics for NPM packages. npm-stat. 16 Aralık 2018 tarihinde erişildi. [https://npm-stat.com/charts.html?package=express&from=1970-01-31&to=2018-12-03]
