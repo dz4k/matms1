@@ -16,7 +16,7 @@ body
         #sorular
           for s in sorular
             .soru
-		    a(href=s.url)= s["İçerik"]
+              a(href=s.url)= s["İçerik"]
               br
-	      span #{s["yazan"]},<em> #{s["Yanıtlar"].length} cevap </em>
+              span #{s["yazan"]},<em> #{s["Yanıtlar"].length} cevap </em>
           

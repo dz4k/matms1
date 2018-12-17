@@ -8,6 +8,7 @@ admin.initializeApp({
 })
 
 const db = admin.firestore()
+db.settings({timestampsInSnapshots: true})
 // Sunucu
 
 const app = express()
@@ -21,6 +22,7 @@ app.get("/", (req, res) => {
   let sorular = db.collection("Sorular").get().then(
     (snapshot) => {
       let docs = snapshot.docs
+      console.log(docs)
       res.render(
         __dirname+"/views/index.pug",{
 		sorular: docs
