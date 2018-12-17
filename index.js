@@ -17,10 +17,21 @@ app.use(express.static('wwwroot'))
 app.set('views', './views')
 app.set('view engine', 'pug')
 
-app.get("/", (req, res) => 
+app.get("/", (req, res) => {
+  let sorular = db.collection("Sorular").get().then(
+    (snapshot) => {
+      let docs = snapshot.docs
+      res.render(
+        __dirname+"/views/index.pug",{
+		sorular: docs
+        }
+      )
+    }
+  )
   res.render(
     __dirname+"/views/index.pug"
   )
+}
 )
 
 app.get("/soru/", (req, res) => 

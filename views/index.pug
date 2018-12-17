@@ -6,19 +6,6 @@ html
     link(rel="stylesheet" href="/styles.css")
 script(type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML")
 
-    - 
-      let sorular = [
-        { 
-          yazan: "birisi", 
-          icerik: "`f(x)= a^x` fonksiyonunun tersi nedir?",
-          cevapSayisi: 3
-        },
-        {
-          yazan: "loremipsum",
-          icerik: "`fx = 2x + 1`, `(f @ g)x = 3x -2`, `gx=?`",
-          cevapSayisi: 4
-        }
-      ]
 body
     #app
       header
@@ -29,7 +16,7 @@ body
         #sorular
           for s in sorular
             .soru
-              a(href=s.url)= s.icerik
+		    a(href=s.url)= s["İçerik"]
               br
-              span #{s.yazan},<em> #{s.cevapSayisi} cevap </em>
+	      span #{s["yazan"]},<em> #{s["Yanıtlar"].length} cevap </em>
           
