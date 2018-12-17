@@ -37,7 +37,7 @@ olarak HTML-CSS, SVG ve MathML formatlarını destekler.
 ### 1.6. Pug
 
 Pug, HTML için bir önişlemcidir (İng. _preprocessor_). Sunucu veya istemci tarafından derlenebilir. Gömülü JavaScript ifadelerini 
-değerlendirebilir. `(pug) for` ve `(pug) if` direktifleri ile dinamik içerikli sayfalar oluşturmayı kolaylaştırır. Gramer yapısı 
+değerlendirebilir. `for` ve `if` direktifleri ile dinamik içerikli sayfalar oluşturmayı kolaylaştırır. Gramer yapısı 
 kısa ve okunaklı olması için tasarlanmıştır. 
 
 ## 2. Yöntem
