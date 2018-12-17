@@ -1,5 +1,13 @@
 const express = require("express"),
+      admin = require('firebase-admin'),
+      serviceAccount = require("../serviceAccount.json")
 
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL: "https://mat-ms.firebaseio.com"
+})
+
+const db = admin.firestore()
 // Sunucu
 
 const app = express()
