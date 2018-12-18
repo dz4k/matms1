@@ -1,11 +1,14 @@
-extends root.pug
+extends includes/root.pug
 
-style
-  include index.css
+
 block topbar
   form#form-sor
-    input#sor(placeholder="Soru sor..." multiline)
+    input#sor(placeholder="Ara" multiline)
 block content
+  
+  style
+    include index.css
+
   #sorular
     for s in sorular
       .soru

@@ -1,4 +1,8 @@
-extends root.pug
+extends includes/root.pug
 block topbar 
-  
+  a(href="/")= "`larr`"
 block content
+    .soru
+        a(href=s.url)= s["İçerik"]
+        br
+        span #{s["yazan"]},<em> #{s["Yanıtlar"].length} cevap </em>

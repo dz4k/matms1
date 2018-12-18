@@ -1,14 +1,5 @@
 
-  .soru {
-    background-color: white;
-    box-shadow: 0 2px 5px;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-  }
-  .soru > a {
-    font-size: 2.5rem;
-  }
+
   #sor {
     grid-area: arama;
     height: 3em;
