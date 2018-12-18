@@ -38,6 +38,7 @@ app.get("/", (req, res) => {
 
 app.get("/soru/", (req, res) => {
     db.collection("Sorular").doc(req.query.id).get().then((snapshot) => {
+      if (!snapshot.data) {res.status(404);return}
       res.render(__dirname+"/views/soru.pug", {soru:snapshot.data})
     }
     
