@@ -12,7 +12,7 @@ block content
   #sorular
     for soru in sorular
       .soru
-        a(href=soru.url)= soru["İçerik"]
+        a(href="/soru?id="+soru.id)= soru["İçerik"]
         br
-        span #{soru["yazan"]},<em> #{soru["Yanıtlar"].length} cevap </em>
+        span #{soru["yazan"]},<em> #{soru.yanitlar.length} cevap </em>
           

@@ -11,7 +11,7 @@ block content
         form(method="POST" action=postUrl)
             include includes/girdi.pug
     #yanitlar
-        for yanit in soru["Yanıtlar"]
+        for yanit in soru.yanitlar
             .yanit
                 p=yanit["İçerik"]
                 em=yanit["Yazan"]

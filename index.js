@@ -17,13 +17,19 @@ db.settings({ timestampsInSnapshots: true })
 /**
  * 
  * @param {FirebaseFirestore.DocumentSnapshot} doc 
+ * @returns {Promise} for view 
  */
-function adaptDoc(doc) { 
-  return { 
-    ...doc.data(), 
-    id: doc.ref.id, 
-    yanitlar: doc.ref.collection("Yanıtlar").listDocuments() 
-  } 
+async function adaptDoc(doc) {
+  // TODO: refactor
+  return {
+    ...doc.data(),
+    id: doc.ref.id,
+    yanitlar: (await doc.ref.collection("Yanıtlar")
+      .listDocuments()
+      .then(refs => 
+        Promise.all(refs.map(ref => ref.get()))
+      )).map(snapshot => snapshot.data())
+  }
 }
 
 const app = express()
@@ -35,6 +41,7 @@ app.set('views', './views')
 app.set('view engine', 'pug')
 
 app.get("/", (req, res) => {
+  console.log("ayy")
   db.collection("Sorular").get().then(
     (snapshot) => {
       let docs = snapshot.docs
@@ -52,7 +59,10 @@ app.get("/", (req, res) => {
 app.get("/soru/", (req, res) => {
   db.collection("Sorular").doc(req.query.id).get().then((snapshot) => {
     if (!snapshot.data) { res.status(404); return }
-    res.render(__dirname + "/views/soru.pug", { soru: adaptDoc(snapshot) })
+    adaptDoc(snapshot).then((doc) => {
+      console.log(doc)
+      res.render(__dirname + "/views/soru.pug", { soru: doc })
+    })
   }
 
   )
