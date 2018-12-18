@@ -1,8 +1,16 @@
 extends includes/root.pug
 block topbar 
-  a(href="/")= "`larr`"
+  a(href="/" style="font-size: 24px;")= "`larr`"
 block content
     .soru
         a(href=soru.url)= soru["İçerik"]
         br
         span #{soru["yazan"]},<em> #{soru["Yanıtlar"].length} cevap </em>
+    #yanitlar
+        for yanit in soru["Yanıtlar"]
+            .yanit
+                p=yanit["İçerik"]
+                em=yanit["Yazan"]
+    style
+        include soru.css
+                
