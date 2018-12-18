@@ -1,6 +1,6 @@
 const express = require("express"),
-      admin = require('firebase-admin'),
-      serviceAccount = require("../serviceAccount.json")
+  admin = require('firebase-admin'),
+  serviceAccount = require("../serviceAccount.json")
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
@@ -8,7 +8,7 @@ admin.initializeApp({
 })
 
 const db = admin.firestore()
-db.settings({timestampsInSnapshots: true})
+db.settings({ timestampsInSnapshots: true })
 // Sunucu
 
 const app = express()
@@ -19,36 +19,34 @@ app.set('views', './views')
 app.set('view engine', 'pug')
 
 app.get("/", (req, res) => {
-  let sorular = db.collection("Sorular").get().then(
+  db.collection("Sorular").get().then(
     (snapshot) => {
       let docs = snapshot.docs
       console.log(docs)
       res.render(
-        __dirname+"/views/index.pug",{
-		sorular: docs.map(doc=>doc.data)
+        __dirname + "/views/index.pug", {
+          sorular: docs.map(doc => doc.data)
         }
       )
     }
   )
-  res.render(
-    __dirname+"/views/index.pug"
-  )
+
 }
 )
 
 app.get("/soru/", (req, res) => {
-    db.collection("Sorular").doc(req.query.id).get().then((snapshot) => {
-      if (!snapshot.data) {res.status(404);return}
-      res.render(__dirname+"/views/soru.pug", {soru:snapshot.data})
-    }
-    
-    )
+  db.collection("Sorular").doc(req.query.id).get().then((snapshot) => {
+    if (!snapshot.data) { res.status(404); return }
+    res.render(__dirname + "/views/soru.pug", { soru: snapshot.data })
   }
+
+  )
+}
 
 )
 
-app.get("/sor", (req, res) => {})
+app.get("/sor", (req, res) => { })
 
 app.post("soru", (req, res) => {
-  
-} )
+
+})
