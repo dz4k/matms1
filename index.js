@@ -13,6 +13,8 @@ const db = admin.firestore()
 db.settings({ timestampsInSnapshots: true })
 // Sunucu
 
+function adaptDoc(doc) {return {...doc.data(), id: doc.ref.id}}
+
 const app = express()
 const server = app.listen(3000)
 
@@ -26,7 +28,7 @@ app.get("/", (req, res) => {
       let docs = snapshot.docs
       res.render(
         __dirname + "/views/index.pug", {
-          sorular: docs.map(doc => doc.data())
+          sorular: docs.map(adaptDoc)
         }
       )
     }
@@ -38,7 +40,7 @@ app.get("/", (req, res) => {
 app.get("/soru/", (req, res) => {
   db.collection("Sorular").doc(req.query.id).get().then((snapshot) => {
     if (!snapshot.data) { res.status(404); return }
-    res.render(__dirname + "/views/soru.pug", { soru: snapshot.data() })
+    res.render(__dirname + "/views/soru.pug", { soru: adaptDoc(snapshot)})
   }
 
   )

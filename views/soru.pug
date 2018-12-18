@@ -6,6 +6,9 @@ block content
         a(href=soru.url)= soru["İçerik"]
         br
         span #{soru["yazan"]},<em> #{soru["Yanıtlar"].length} cevap </em>
+    #yanitla
+        - let postUrl = "/soru?id=" + soru.id
+        include includes/girdi.pug
     #yanitlar
         for yanit in soru["Yanıtlar"]
             .yanit
