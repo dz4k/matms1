@@ -46,6 +46,9 @@ app.get("/soru/", (req, res) => {
   }
 
 )
+
+app.get("/sor", (req, res) => {})
+
 app.post("soru", (req, res) => {
   
 } )
