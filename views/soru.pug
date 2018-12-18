@@ -1,6 +1,7 @@
 extends includes/root.pug
 block topbar 
-  a(href="/" style="font-size: 24px;")= "`larr`"
+  a(href="/" style="display: block; font-size: 18px; margin-bottom: 20px; color: black;")
+    | `larr " Anasayfa"`
 block content
     .soru
         a(href=soru.url)= soru["İçerik"]
