@@ -1,6 +1,7 @@
 //@ts-check
 const express = require("express"),
   admin = require('firebase-admin'),
+  // @ts-ignore
   serviceAccount = require("../serviceAccount.json")
 
 admin.initializeApp({
