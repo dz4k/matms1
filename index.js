@@ -11,7 +11,9 @@ admin.initializeApp({
 })
 
 const db = admin.firestore()
-db.settings({ timestampsInSnapshots: true })
+db.settings({
+  timestampsInSnapshots: true
+})
 // Sunucu
 
 /**
@@ -26,7 +28,7 @@ async function adaptDoc(doc) {
     id: doc.ref.id,
     yanitlar: (await doc.ref.collection("Yanıtlar")
       .listDocuments()
-      .then(refs => 
+      .then(refs =>
         Promise.all(refs.map(ref => ref.get()))
       )).map(snapshot => snapshot.data())
   }
@@ -53,24 +55,28 @@ app.get("/", (req, res) => {
     }
   )
 
-}
-)
+})
 
 app.get("/soru/", (req, res) => {
-  db.collection("Sorular").doc(req.query.id).get().then((snapshot) => {
-    if (!snapshot.data) { res.status(404); return }
-    adaptDoc(snapshot).then((doc) => {
-      console.log(doc)
-      res.render(__dirname + "/views/soru.pug", { soru: doc })
-    })
-  }
+    db.collection("Sorular").doc(req.query.id).get().then((snapshot) => {
+        if (!snapshot.data) {
+          res.status(404);
+          return
+        }
+        adaptDoc(snapshot).then((doc) => {
+          console.log(doc)
+          res.render(__dirname + "/views/soru.pug", {
+            soru: doc
+          })
+        })
+      }
 
-  )
-}
+    )
+  }
 
 )
 
-app.get("/sor", (req, res) => { })
+app.get("/sor", (req, res) => {})
 
 app.post("soru", (req, res) => {
 
@@ -89,9 +95,9 @@ app.post("/yanitla", (req, res) => {
     return
   }
   if (
-    !req.query.id
-    || typeof yanit["Yazan"] !== "string"
-    || typeof yanit["İçerik"] !== "string"
+    !req.query.id ||
+    typeof yanit["Yazan"] !== "string" ||
+    typeof yanit["İçerik"] !== "string"
   ) {
     res.status(400)
     console.log("sfds")
