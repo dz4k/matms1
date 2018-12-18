@@ -1,3 +1,4 @@
+//@ts-check
 const express = require("express"),
   admin = require('firebase-admin'),
   serviceAccount = require("../serviceAccount.json")
@@ -22,10 +23,9 @@ app.get("/", (req, res) => {
   db.collection("Sorular").get().then(
     (snapshot) => {
       let docs = snapshot.docs
-      console.log(docs)
       res.render(
         __dirname + "/views/index.pug", {
-          sorular: docs.map(doc => doc.data)
+          sorular: docs.map(doc => doc.data())
         }
       )
     }
