@@ -3,6 +3,6 @@ block topbar
   a(href="/")= "`larr`"
 block content
     .soru
-        a(href=s.url)= s["İçerik"]
+        a(href=soru.url)= soru["İçerik"]
         br
-        span #{s["yazan"]},<em> #{s["Yanıtlar"].length} cevap </em>
+        span #{soru["yazan"]},<em> #{soru["Yanıtlar"].length} cevap </em>
