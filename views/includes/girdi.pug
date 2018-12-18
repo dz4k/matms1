@@ -1,9 +1,8 @@
-form(method="POST" action=postUri)
-    style(scoped)
-      include girdi.css
-    #dugmeler
-      | TODO:
-    p= postUri
-    .inputHelpers
-    input(type="text")
-    input(type="submit", value="Gönder")
+style(scoped)
+  include girdi.css
+#dugmeler
+  | TODO:
+p= postUri
+.inputHelpers
+input(type="text" name="Yazan")
+input(type="submit" name="İçerik" value="Gönder")
