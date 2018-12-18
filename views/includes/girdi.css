@@ -1,0 +1,30 @@
+form {
+    grid-area: form;
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 80% 20%;
+    grid-template-areas: 
+      "dugmeler gonder"
+      "yazi yazi";
+  }
+   
+  input {
+    border: none;
+    height: 2.5rem;
+    resize:none;
+    box-sizing: border-box;
+    font-size: 14px;
+  }
+  input[type=text] {
+    background-color: white;
+    grid-area: yazi;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    box-shadow: 0px 1px 1px 1px inset ;
+  }
+  input[type=submit] {
+    grid-area: gonder;
+    border-top-right-radius: 10px;
+    background-color: black;
+    color: white;
+  }
