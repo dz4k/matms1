@@ -36,13 +36,14 @@ app.get("/", (req, res) => {
 }
 )
 
-app.get("/soru/", (req, res) => 
-  res.render(
-    __dirname+"/views/soru.pug",
-    {
-      soru: req.query.id,
+app.get("/soru/", (req, res) => {
+    db.collection("Sorular").doc(req.query.id).get().then((snapshot) => {
+      res.render(__dirname+"/views/soru.pug", {soru:snapshot.data})
     }
-  )
+    
+    )
+  }
+
 )
 app.post("soru", (req, res) => {
   
