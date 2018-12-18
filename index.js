@@ -25,7 +25,7 @@ app.get("/", (req, res) => {
       console.log(docs)
       res.render(
         __dirname+"/views/index.pug",{
-		sorular: docs
+		sorular: docs.map(doc=>doc.data)
         }
       )
     }
