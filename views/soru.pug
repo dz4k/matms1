@@ -6,7 +6,7 @@ block content
     .soru
         a(href=soru.url)= soru["İçerik"]
         br
-        span #{soru["yazan"]},<em> #{soru.yanitlar.length} cevap </em>
+        span #{soru["Yazan"]},<em> #{soru.yanitlar.length} cevap </em>
     #yanitla
         - let postUrl = "../yanitla?id=" + soru.id
         form(method="POST" action=postUrl)

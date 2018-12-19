@@ -1,5 +1,4 @@
-#sor {
-  grid-area: arama;
+#ara {
   height: 3em;
   width: 100%;
   padding-left: 10px;
@@ -11,6 +10,9 @@
   resize: none;
 }
 
+#sor {
+  padding-bottom: 10px;
+}
 a {
   text-decoration-line: none;
   color: black;

@@ -43,8 +43,11 @@ header > h1 {
   font-size: 2.5rem;
 }
 
-/*
-.mjx-chtml {
-  background-color:gray;
+button, input[type=submit] {
+  border-style: none;
+  padding:  0px 20px;
+  border-radius: 10px;
+  background-color: black;
+  color: white;
+  height: 2.5rem;
 }
-*/

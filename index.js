@@ -56,7 +56,7 @@ app.get("/", (req, res) => {
   )
 })
 
-app.get("/soru/", (req, res) => {
+app.get("/soru", (req, res) => {
     db.collection("Sorular")
     .doc(req.query.id).get().then((snapshot) => {
         if (!snapshot.data) return res.status(404);
@@ -68,7 +68,17 @@ app.get("/soru/", (req, res) => {
   }
 )
 
-app.post("soru", (req, res) => {})
+app.post("/soru", (req, res) => {
+  if (!req.body || 
+    typeof req.body["Yazan"] !== "string" || 
+    typeof req.body["İçerik"] !== "string"
+  ) {
+    return res.send(400/*Bad Request*/)
+  }
+  db.collection("Sorular").add(req.body)
+  res.status(200)
+  res.send()
+})
 
 app.post("/yanitla", (req, res) => {
   if (

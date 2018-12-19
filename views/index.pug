@@ -2,17 +2,22 @@ extends includes/root.pug
 
 
 block topbar
-  form#form-sor
-    input#sor(placeholder="Ara" multiline)
+  input#ara(placeholder="Ara")
+  button Soru sor
+  #girdi
+    - let postUrl = "../soru"
+    form(method="POST" action=postUrl)
+      include includes/girdi.pug
+    
 block content
   
   style
     include index.css
-
+  
   #sorular
     for soru in sorular
       .soru
         a(href="/soru?id="+soru.id)= soru["İçerik"]
         br
-        span #{soru["yazan"]},<em> #{soru.yanitlar.length} cevap </em>
+        span #{soru["Yazan"]},<em> #{soru.yanitlar.length} cevap </em>
           
