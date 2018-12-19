@@ -7,7 +7,7 @@ yardımlaşma platformlarının yetersizlikleri öğrencilere ders çalışırke
 
 Bu platformlar matematik ve diğer sayısal derslerde vazgeçilmez olan notasyonu desteklememektedir. Çoğu matematiksel sembolü kullanmak 
 mümkün değildir. Bu duruma karşılık öğrenciler elle yazdıkları ifadelerin çekmekte veya düz metin üzerinden okunaksız ve standarda bağlı 
-olmayan bir biçem kullanmaktadır. İletişim zorluğu ve zaman kaybı görülmektedir. Görme engelli öğrenciler için eriişilebilir değildir.
+olmayan bir biçem kullanmaktadır. İletişim zorluğu ve zaman kaybı görülmektedir. Görme engelli öğrenciler için erişilebilir değildir.
 
 Proje kapsamında mevcut öğrenci yardımlaşma platformlarının belirli kusurlarına çözüm sunulmuştur. Bu kusurlar yetersiz notasyon 
 desteği, dikkat dağıtıcı veya kullanışsız arayüz olarak saptanmıştır.
