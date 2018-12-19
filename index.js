@@ -14,6 +14,7 @@ const db = admin.firestore()
 db.settings({
   timestampsInSnapshots: true
 })
+
 // Sunucu
 
 /**
@@ -46,8 +47,10 @@ app.get("/", (req, res) => {
   db.collection("Sorular").get().then(
     (snapshot) => {
       let belgeler = snapshot.docs.map(adaptDoc)
-      Promise.all(belgeler).then(sorular => 
-        res.render(__dirname + "/views/index.pug", {sorular})
+      Promise.all(belgeler).then(sorular =>
+        res.render(__dirname + "/views/index.pug", {
+          sorular
+        })
       )
     }
   )
