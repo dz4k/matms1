@@ -46,6 +46,9 @@ kısa ve okunaklı olması için tasarlanmıştır.
 
 __a. Veritabanı oluşturulması__
 
+- a.1. Firebase kurulumu
+- a.2. Veritabanı şemasının oluşturulması
+
 __b. Matematik yazımı__
 
 b.1. MathJax kütüphanesinin kurulumu
@@ -54,7 +57,9 @@ b.3. Matematik yazımı için arayüz kodlanması
 
 __c. Web sitesi__
 
-c.1. Kullanıcı arayüzü yapımı
+c.1. Anasayfa yapılması
+c.2. Soru görüntüleme sayfasının yapılması
+c.3. Arama özelliğinin eklenmesi
 c.2. Dinamik içeriğin küllanıcıya sunumu
 c.3. Soru sormak ve cevap vermek için yol oluşturulması
 
