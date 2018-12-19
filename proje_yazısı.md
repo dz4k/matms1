@@ -93,6 +93,107 @@ __c. Web sitesi__
 
 ### 3.4. Proje Kodlarının Açıklanması
 
+#### 3.4.1 index.js
+
+```(javascript)
+const express = require("express"),
+  admin = require('firebase-admin'),
+  serviceAccount = require("../serviceAccount.json"),
+  bodyParser = require("body-parser")
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL: "https://mat-ms.firebaseio.com"
+})
+
+const db = admin.firestore()
+db.settings({
+  timestampsInSnapshots: true
+})
+```
+
+```(javascript)
+async function adaptDoc(belge) {
+  // TODO: refactor
+  return {
+    ...belge.data(),
+    id: belge.ref.id,
+    yanitlar: (await belge.ref.collection("Yanıtlar")
+      .listDocuments()
+      .then(refler =>
+        Promise.all(refler.map(ref => ref.get()))
+      )).map(snapshot => snapshot.data())
+  }
+}
+```
+```(javascript)
+const app = express()
+const sunucu = app.listen(3000)
+
+app.use(express.static('wwwroot'))
+app.use(bodyParser.urlencoded())
+app.set('views', './views')
+app.set('view engine', 'pug')
+```
+```(javascript)
+app.get("/", (req, res) => {
+  db.collection("Sorular").get().then(
+    (snapshot) => {
+      let belgeler = snapshot.docs.map(adaptDoc)
+      Promise.all(belgeler).then(sorular =>
+        res.render(__dirname + "/views/index.pug", {
+          sorular
+        })
+      )
+    }
+  )
+})
+```
+```(javascript)
+app.get("/soru/", (req, res) => {
+    db.collection("Sorular").doc(req.query.id).get().then((snapshot) => {
+        if (!snapshot.data) {
+          res.status(404);
+          return
+        }
+        adaptDoc(snapshot).then((doc) => {
+          console.log(doc)
+          res.render(__dirname + "/views/soru.pug", {
+            soru: doc
+          })
+        })
+      }
+    )
+  }
+)
+```
+```(javascript)
+app.get("/sor", (req, res) => {})
+
+app.post("soru", (req, res) => {
+
+})
+```
+```(javascript)
+app.post("/yanitla", (req, res) => {
+  if (
+    !req.query.id ||
+    typeof req.body["Yazan"] !== "string" ||
+    typeof req.body["İçerik"] !== "string"
+  ) {
+    return res.status(400)
+  }
+  db.collection("Sorular")
+  .doc(req.query.id)
+    .collection("Yanıtlar").add({
+      "Yazan": req.body["Yazan"],
+      "İçerik": req.body["İçerik"]
+    })
+  res.status(200)
+  res.send()
+})
+```
+
 ## 4. Sonuçlar ve Tartışma
 
 ## 5. Öneriler

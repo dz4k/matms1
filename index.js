@@ -82,29 +82,19 @@ app.post("soru", (req, res) => {
 })
 
 app.post("/yanitla", (req, res) => {
-  let yanit
-  try {
-    yanit = {
-      "Yazan": req.body["Yazan"],
-      "İçerik": req.body["İçerik"]
-    }
-  } catch {
-    res.status(400)
-    console.log(req.body, req.query)
-    return
-  }
   if (
     !req.query.id ||
-    typeof yanit["Yazan"] !== "string" ||
-    typeof yanit["İçerik"] !== "string"
+    typeof req.body["Yazan"] !== "string" ||
+    typeof req.body["İçerik"] !== "string"
   ) {
-    res.status(400)
-    console.log("sfds")
-    return
+    return res.status(400)
   }
-  console.log(yanit)
-  db.collection("Sorular").doc(req.query.id).collection("Yanıtlar").add(yanit)
+  db.collection("Sorular")
+  .doc(req.query.id)
+    .collection("Yanıtlar").add({
+      "Yazan": req.body["Yazan"],
+      "İçerik": req.body["İçerik"]
+    })
   res.status(200)
   res.send()
-
 })
