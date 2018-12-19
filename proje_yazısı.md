@@ -51,17 +51,17 @@ __a. Veritabanı oluşturulması__
 
 __b. Matematik yazımı__
 
-b.1. MathJax kütüphanesinin kurulumu
-b.2. MathJax'in Türkçeleştirilmesi
-b.3. Matematik yazımı için arayüz kodlanması
+- b.1. MathJax kütüphanesinin kurulumu
+- b.2. MathJax'in Türkçeleştirilmesi
+- b.3. Matematik yazımı için arayüz kodlanması
 
 __c. Web sitesi__
 
-c.1. Anasayfa yapılması
-c.2. Soru görüntüleme sayfasının yapılması
-c.3. Arama özelliğinin eklenmesi
-c.2. Dinamik içeriğin küllanıcıya sunumu
-c.3. Soru sormak ve cevap vermek için yol oluşturulması
+- c.1. Anasayfa yapılması
+- c.2. Soru görüntüleme sayfasının yapılması
+- c.3. Arama özelliğinin eklenmesi
+- c.2. Dinamik içeriğin küllanıcıya sunumu
+- c.3. Soru sormak ve cevap vermek için yol oluşturulması
 
 ## 3. Bulgular ve Gerçekleşme
 
