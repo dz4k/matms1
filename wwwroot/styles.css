@@ -1,28 +1,26 @@
 @import url('https://fonts.googleapis.com/css?family=Old+Standard+TT');
 
-#app {
+body {
   display: grid;
   grid-template-columns: 20% 60% 20%;
   grid-template-areas:
     ". baslik    ."
-    ". arama     ."
     ". container .";
-}
-body {
   background-color: #ededed;
 }
 
+header {
+  padding-bottom: 10px;
+}
+
 @media screen and (max-width: 500px) {
-  #app {
+  body {
     grid-template-columns: 0% 100% 0%;
   }
 }
-* {
-  font-family: "Old Standard TT", serif;
-  box-sizing: border-box;
-}
-@media screen and (min-width: 500px) and (max-width: 700px) {
-  #app {
+
+@media screen and (max-width: 700px) and (min-width: 501px) {
+  body {
     grid-template-columns: 10% 80% 10%;
   }
 }
