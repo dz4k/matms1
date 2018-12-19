@@ -21,6 +21,15 @@ body {
   font-family: "Old Standard TT", serif;
   box-sizing: border-box;
 }
+@media screen and (min-width: 500px) and (max-width: 700px) {
+  #app {
+    grid-template-columns: 10% 80% 10%;
+  }
+}
+* {
+  font-family: "Old Standard TT", serif;
+  box-sizing: border-box;
+}
 header {
   grid-area: baslik;
 }
