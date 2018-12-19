@@ -47,7 +47,7 @@ kısa ve okunaklı olması için tasarlanmıştır.
 __a. Veritabanı oluşturulması__
 
 - a.1. Firebase kurulumu
-- a.2. Veritabanı şemasının oluşturulması
+- a.2. Admin SDK kurulumu
 
 __b. Matematik yazımı__
 
@@ -60,10 +60,38 @@ __c. Web sitesi__
 - c.1. Anasayfa yapılması
 - c.2. Soru görüntüleme sayfasının yapılması
 - c.3. Arama özelliğinin eklenmesi
-- c.2. Dinamik içeriğin küllanıcıya sunumu
-- c.3. Soru sormak ve cevap vermek için yol oluşturulması
+- c.4. Dinamik içeriğin küllanıcıya sunumu
+- c.5. Soru sormak ve cevap vermek için yol oluşturulması
 
 ## 3. Bulgular ve Gerçekleşme
+
+### 3.1 Veritabanı oluşturulması
+
+#### a.1. Firebase kurulumu
+
+#### a.2. Admin SDK kurulumu
+
+### 3.2. Matematik yazımı
+
+#### b.1. MathJax kütüphanesinin kurulumu
+
+#### b.2. MathJax'in Türkçeleştirilmesi
+
+#### b.3. Matematik yazımı için arayüz kodlanması
+
+### 3.3. Web sitesi
+
+#### c.1. Anasayfa yapılması
+
+#### c.2. Soru görüntüleme sayfasının yapılması
+
+#### c.3. Arama özelliğinin eklenmesi
+
+#### c.4. Dinamik içeriğin küllanıcıya sunumu
+
+#### c.5. Soru sormak ve cevap vermek için yol oluşturulması
+
+### 3.4. Proje Kodlarının Açıklanması
 
 ## 4. Sonuçlar ve Tartışma
 
