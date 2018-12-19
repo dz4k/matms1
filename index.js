@@ -18,24 +18,24 @@ db.settings({
 
 /**
  * 
- * @param {FirebaseFirestore.DocumentSnapshot} doc 
- * @returns {Promise} for view 
+ * @param {FirebaseFirestore.DocumentSnapshot} belge 
+ * @returns {Promise} arayüz için veri
  */
-async function adaptDoc(doc) {
+async function adaptDoc(belge) {
   // TODO: refactor
   return {
-    ...doc.data(),
-    id: doc.ref.id,
-    yanitlar: (await doc.ref.collection("Yanıtlar")
+    ...belge.data(),
+    id: belge.ref.id,
+    yanitlar: (await belge.ref.collection("Yanıtlar")
       .listDocuments()
-      .then(refs =>
-        Promise.all(refs.map(ref => ref.get()))
+      .then(refler =>
+        Promise.all(refler.map(ref => ref.get()))
       )).map(snapshot => snapshot.data())
   }
 }
 
 const app = express()
-const server = app.listen(3000)
+const sunucu = app.listen(3000)
 
 app.use(express.static('wwwroot'))
 app.use(bodyParser.urlencoded())
@@ -45,8 +45,8 @@ app.set('view engine', 'pug')
 app.get("/", (req, res) => {
   db.collection("Sorular").get().then(
     (snapshot) => {
-      let docs = snapshot.docs.map(adaptDoc)
-      Promise.all(docs).then(sorular => 
+      let belgeler = snapshot.docs.map(adaptDoc)
+      Promise.all(belgeler).then(sorular => 
         res.render(__dirname + "/views/index.pug", {sorular})
       )
     }
