@@ -57,29 +57,18 @@ app.get("/", (req, res) => {
 })
 
 app.get("/soru/", (req, res) => {
-    db.collection("Sorular").doc(req.query.id).get().then((snapshot) => {
-        if (!snapshot.data) {
-          res.status(404);
-          return
-        }
-        adaptDoc(snapshot).then((doc) => {
-          console.log(doc)
-          res.render(__dirname + "/views/soru.pug", {
-            soru: doc
-          })
+    db.collection("Sorular")
+    .doc(req.query.id).get().then((snapshot) => {
+        if (!snapshot.data) return res.status(404);
+        adaptDoc(snapshot).then((soru) => {
+          res.render(__dirname + "/views/soru.pug", {soru})
         })
       }
-
     )
   }
-
 )
 
-app.get("/sor", (req, res) => {})
-
-app.post("soru", (req, res) => {
-
-})
+app.post("soru", (req, res) => {})
 
 app.post("/yanitla", (req, res) => {
   if (

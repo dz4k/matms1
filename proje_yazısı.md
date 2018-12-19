@@ -151,16 +151,11 @@ app.get("/", (req, res) => {
 ```
 ```(javascript)
 app.get("/soru/", (req, res) => {
-    db.collection("Sorular").doc(req.query.id).get().then((snapshot) => {
-        if (!snapshot.data) {
-          res.status(404);
-          return
-        }
-        adaptDoc(snapshot).then((doc) => {
-          console.log(doc)
-          res.render(__dirname + "/views/soru.pug", {
-            soru: doc
-          })
+    db.collection("Sorular")
+    .doc(req.query.id).get().then((snapshot) => {
+        if (!snapshot.data) return res.status(404);
+        adaptDoc(snapshot).then((soru) => {
+          res.render(__dirname + "/views/soru.pug", {soru})
         })
       }
     )
@@ -168,11 +163,7 @@ app.get("/soru/", (req, res) => {
 )
 ```
 ```(javascript)
-app.get("/sor", (req, res) => {})
-
-app.post("soru", (req, res) => {
-
-})
+app.post("soru", (req, res) => {})
 ```
 ```(javascript)
 app.post("/yanitla", (req, res) => {
@@ -185,11 +176,11 @@ app.post("/yanitla", (req, res) => {
   }
   db.collection("Sorular")
   .doc(req.query.id)
-    .collection("Yanıtlar").add({
+    .collection("Yanıtlar").add({ // Veritabanına belge ekle
       "Yazan": req.body["Yazan"],
       "İçerik": req.body["İçerik"]
     })
-  res.status(200)
+  res.status(200) // Başarılı
   res.send()
 })
 ```
