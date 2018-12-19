@@ -3,8 +3,8 @@ extends includes/root.pug
 
 block topbar
   input#ara(placeholder="Ara")
-  button Soru sor
-  #girdi
+  button#btn Soru sor
+  #girdi.hidden
     - let postUrl = "../soru"
     form(method="POST" action=postUrl)
       include includes/girdi.pug
@@ -20,4 +20,7 @@ block content
         a(href="/soru?id="+soru.id)= soru["İçerik"]
         br
         span #{soru["Yazan"]},<em> #{soru.yanitlar.length} cevap </em>
-          
+
+  script
+    include includes/index.pug.js
+    

@@ -1,6 +1,5 @@
 form {
   grid-area: form;
-  margin-top: 20px;
   margin-bottom: 20px;
   display: grid;
   grid-template-columns: 80% 20%;
@@ -8,6 +7,8 @@ form {
     "dugmeler  gonder"
     "yazan     yazan "
     "icerik    icerik";
+  border-radius: 10px;
+  box-shadow: 0 2px 5px;
 }
 
 #dugmeler {
@@ -27,7 +28,7 @@ input {
 
 input[type=text] {
   background-color: white;
-  border: 1px solid black;
+  border: none;
   padding: 5px;
 }
 
@@ -35,16 +36,18 @@ input#icerik {
   grid-area: icerik;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
-  border-top: none;
 }
 
 input#yazan {
   grid-area: yazan;
+  border-bottom: 1px solid gray;
 }
 
 input[type=submit] {
+  height: 100%;
   grid-area: gonder;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
   border-top-left-radius: 0;
+  padding: 0;
 }

@@ -46,8 +46,11 @@ header > h1 {
 button, input[type=submit] {
   border-style: none;
   padding:  0px 20px;
+  margin-bottom: 10px;
   border-radius: 10px;
   background-color: black;
   color: white;
   height: 2.5rem;
 }
+
+.hidden { display: none; }
