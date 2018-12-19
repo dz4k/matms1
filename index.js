@@ -49,7 +49,7 @@ app.get("/", (req, res) => {
       let docs = snapshot.docs
       res.render(
         __dirname + "/views/index.pug", {
-          sorular: await Promise.all(docs.map(async doc => await adaptDoc(doc)))
+          sorular: await Promise.all(docs.map( doc =>  adaptDoc(doc)))
         }
       )
     }
