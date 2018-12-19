@@ -80,6 +80,8 @@ Yapılan uygulama okullarda kullanılıp öğrencilerin kendi öğretmenleri ve 
 Matematik dışında dersler için de özellikler eklenebilir. Örneğin kimya dersi için Lewis elektron nokta yapısı çizme özelliği 
 eklenebilir. 
 
+Yeni sorular soruldukça uygulamanın canlı olarak bu soruları göstermesi sağlanabilir.
+
 ## Kaynakça
 
 Çalışkan, T., & Çınar, S. (2010). Akran Desteği: Öğrencilerin Sınıf Ortamı Ve Uygulama Alanlarında Birbirleriyle Yardımlaşma 
