@@ -43,18 +43,14 @@ app.set('views', './views')
 app.set('view engine', 'pug')
 
 app.get("/", (req, res) => {
-  console.log("ayy")
   db.collection("Sorular").get().then(
-    async (snapshot) => {
-      let docs = snapshot.docs
-      res.render(
-        __dirname + "/views/index.pug", {
-          sorular: await Promise.all(docs.map( doc =>  adaptDoc(doc)))
-        }
+    (snapshot) => {
+      let docs = snapshot.docs.map(adaptDoc)
+      Promise.all(docs).then(sorular => 
+        res.render(__dirname + "/views/index.pug", {sorular})
       )
     }
   )
-
 })
 
 app.get("/soru/", (req, res) => {
