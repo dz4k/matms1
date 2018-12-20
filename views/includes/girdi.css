@@ -7,13 +7,13 @@ form {
     "dugmeler  gonder"
     "yazan     yazan "
     "icerik    icerik";
-  border-radius: 10px;
+  border-radius: 5px;
   box-shadow: 0 2px 5px;
 }
 
 #dugmeler {
   background-color: rgb(185, 185, 185);
-  border-top-left-radius: 10px;
+  border-top-left-radius: 5px;
   padding: 10px;
   color: red;
 }
@@ -34,8 +34,8 @@ input[type=text] {
 
 input#icerik {
   grid-area: icerik;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 input#yazan {

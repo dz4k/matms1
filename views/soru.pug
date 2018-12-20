@@ -4,7 +4,7 @@ block topbar
     | `larr " Anasayfa"`
 block content
     .soru
-        a(href=soru.url)= soru["İçerik"]
+        .icerik= soru["İçerik"]
         br
         span #{soru["Yazan"]},<em> #{soru.yanitlar.length} cevap </em>
     #yanitla

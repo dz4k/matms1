@@ -15,10 +15,11 @@ block content
   
   #sorular
     for soru in sorular
-      .soru
-        a(href="/soru?id="+soru.id)= soru["İçerik"]
-        br
-        span #{soru["Yazan"]},<em> #{soru.yanitlar.length} cevap </em>
+      a(href="/soru?id="+soru.id) 
+        .soru
+          .icerik= soru["İçerik"]
+          br
+          span #{soru["Yazan"]},<em> #{soru.yanitlar.length} cevap </em>
 
   script
     include includes/index.pug.js
