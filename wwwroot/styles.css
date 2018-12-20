@@ -7,6 +7,9 @@ body {
     ". baslik    ."
     ". container .";
   background-color: #ededed;
+  background-image: url("matms-bg.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
 }
 
 header {
