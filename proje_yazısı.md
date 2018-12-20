@@ -107,14 +107,11 @@ admin.initializeApp({
 })
 
 const db = admin.firestore()
-db.settings({
-  timestampsInSnapshots: true
-})
 ```
+İlk iş olarak kullanılacak kütüphaneler belirtilir. Firebase ile bağlantı kurulur ve veritabanına erişilir. 
 
 ```javascript
-async function adaptDoc(belge) {
-  // TODO: refactor
+async function belgeUyarla(belge) {
   return {
     ...belge.data(),
     id: belge.ref.id,
@@ -126,6 +123,8 @@ async function adaptDoc(belge) {
   }
 }
 ```
+`belgeUyarla` fonksiyonunun amacı veritabanındaki belgelerden sayfada gösterilecek bilgileri çıkartmaktır.
+Bu fonksiyon ileride kullanılacaktır.
 ```javascript
 const app = express()
 const sunucu = app.listen(3000)
@@ -135,11 +134,12 @@ app.use(bodyParser.urlencoded())
 app.set('views', './views')
 app.set('view engine', 'pug')
 ```
+Express ile sunucu oluşturulur. POST isteklerinden form verilerini okumak için `bodyParser.urlEncoded` kullanılır.
 ```javascript
 app.get("/", (req, res) => {
   db.collection("Sorular").get().then(
     (snapshot) => {
-      let belgeler = snapshot.docs.map(adaptDoc)
+      let belgeler = snapshot.docs.map(belgeUyarla)
       Promise.all(belgeler).then(sorular =>
         res.render(__dirname + "/views/index.pug", {
           sorular
@@ -149,12 +149,13 @@ app.get("/", (req, res) => {
   )
 })
 ```
+Anasayfaya erişildiğinde veritabanından sorular alınır. Soruların hepsinin uyarlanması beklenir. Son olarak sayfa oluşturulur ve kullanıcıya gönderilir.
 ```javascript
 app.get("/soru/", (req, res) => {
     db.collection("Sorular")
     .doc(req.query.id).get().then((snapshot) => {
         if (!snapshot.data) return res.status(404);
-        adaptDoc(snapshot).then((soru) => {
+        belgeUyarla(snapshot).then((soru) => {
           res.render(__dirname + "/views/soru.pug", {soru})
         })
       }
@@ -162,10 +163,20 @@ app.get("/soru/", (req, res) => {
   }
 )
 ```
+Kullanıcı belirli bir soruya tıkladığında bu rotaya erişir. İstenen soru mevcut değilse 404 hatası verilir. Aksi takdirde soru verilerini içeren belge uyarlanır ve sayfa oluşturulur.
 ```javascript
-app.post("soru", (req, res) => {})
-```
-```javascript
+app.post("/soru", (req, res) => {
+  if (!req.body || 
+    typeof req.body["Yazan"] !== "string" || 
+    typeof req.body["İçerik"] !== "string"
+  ) {
+    return res.send(400/*Bad Request*/)
+  }
+  db.collection("Sorular").add(req.body)
+  res.status(200)
+  res.redirect("back")
+})
+
 app.post("/yanitla", (req, res) => {
   if (
     !req.query.id ||
@@ -176,14 +187,15 @@ app.post("/yanitla", (req, res) => {
   }
   db.collection("Sorular")
   .doc(req.query.id)
-    .collection("Yanıtlar").add({ // Veritabanına belge ekle
+    .collection("Yanıtlar").add({
       "Yazan": req.body["Yazan"],
       "İçerik": req.body["İçerik"]
     })
-  res.status(200) // Başarılı
-  res.send()
+  res.status(200)
+  res.redirect("back")
 })
 ```
+Kullanıcı soru veya cevap yazıp "Gönder" butonuna bastığı zaman POST isteği yapılır. Sunucu bunun üzerine öncelikle istekte doğru verinin bulunup bulunmadığını kontrol der. Yok ise 400 ****(Bad Request) hatası ile cevap verir. Aksi takdirde soru veritabanına eklenir ve kullanıcı geri yönlendirilir.
 
 ## 4. Sonuçlar ve Tartışma
 
