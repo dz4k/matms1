@@ -15,8 +15,19 @@ form {
   background-color: rgb(185, 185, 185);
   border-top-left-radius: 5px;
   padding: 10px;
-  color: red;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
 }
+
+#dugmeler > .dugme {
+  display: inline-block;
+  padding: 5px;
+  width: 2em;
+  z-index: 100;
+}
+
 
 input {
   border: none;

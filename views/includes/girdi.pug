@@ -1,7 +1,22 @@
+-
+  let dugmeler = [
+    {i: "\\`\\`", g: "``"},
+    {i: "a^b", g: "^(b)"},
+    {i: "a_b", g: "_(b)"},
+    {i: "rootab", g: "root(a)(b)"},
+    {i: "a^@", g: "^@"},
+    {i: "veca", g: "veca"},
+    {i: "Delta", g: "Delta"},
+    {i: "=>", g: "=>"}
+  ]
+script let icerik = document.querySelector("icerik")
 style(scoped)
   include girdi.css
 #dugmeler
-  | TODO:
+  for dugme in dugmeler
+    button(onclick="icerik.setRangeText(\""+dugme.g+"\", icerik.selectionStart, icerik.selectionEnd); icerik.focus()")
+      div(class="dugme") `#{dugme.i}`
+    
 input(type="submit" value="Gönder")
 input#yazan(type="text" name="Yazan" placeholder="Adınız")
-input#icerik(type="text" name="İçerik" placeholder="Yanıtınız")
+input#icerik(type="text" name="İçerik" placeholder="İçerik" autocomplete="off")
