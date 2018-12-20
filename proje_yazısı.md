@@ -95,7 +95,7 @@ __c. Web sitesi__
 
 #### 3.4.1 index.js
 
-```(javascript)
+```(js)
 const express = require("express"),
   admin = require('firebase-admin'),
   serviceAccount = require("../serviceAccount.json"),
@@ -112,7 +112,7 @@ db.settings({
 })
 ```
 
-```(javascript)
+```(js)
 async function adaptDoc(belge) {
   // TODO: refactor
   return {
@@ -126,7 +126,7 @@ async function adaptDoc(belge) {
   }
 }
 ```
-```(javascript)
+```(js)
 const app = express()
 const sunucu = app.listen(3000)
 
@@ -135,7 +135,7 @@ app.use(bodyParser.urlencoded())
 app.set('views', './views')
 app.set('view engine', 'pug')
 ```
-```(javascript)
+```(js)
 app.get("/", (req, res) => {
   db.collection("Sorular").get().then(
     (snapshot) => {
@@ -149,7 +149,7 @@ app.get("/", (req, res) => {
   )
 })
 ```
-```(javascript)
+```(js)
 app.get("/soru/", (req, res) => {
     db.collection("Sorular")
     .doc(req.query.id).get().then((snapshot) => {
@@ -162,10 +162,10 @@ app.get("/soru/", (req, res) => {
   }
 )
 ```
-```(javascript)
+```(js)
 app.post("soru", (req, res) => {})
 ```
-```(javascript)
+```(js)
 app.post("/yanitla", (req, res) => {
   if (
     !req.query.id ||
