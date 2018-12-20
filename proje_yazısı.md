@@ -197,6 +197,10 @@ app.post("/yanitla", (req, res) => {
 ```
 Kullanıcı soru veya cevap yazıp "Gönder" butonuna bastığı zaman POST isteği yapılır. Sunucu bunun üzerine öncelikle istekte doğru verinin bulunup bulunmadığını kontrol der. Yok ise 400 (Bad Request) hatası ile cevap verir. Aksi takdirde soru veritabanına eklenir ve kullanıcı geri yönlendirilir.
 
+### 3.5. Proje Ekran Görüntüleri
+
+![](ekran_görüntüleri/1.png)
+
 ## 4. Sonuçlar ve Tartışma
 
 ## 5. Öneriler
