@@ -77,7 +77,7 @@ app.post("/soru", (req, res) => {
   }
   db.collection("Sorular").add(req.body)
   res.status(200)
-  res.send()
+  res.redirect("back")
 })
 
 app.post("/yanitla", (req, res) => {
@@ -95,5 +95,5 @@ app.post("/yanitla", (req, res) => {
       "İçerik": req.body["İçerik"]
     })
   res.status(200)
-  res.send()
+  res.redirect("back")
 })
