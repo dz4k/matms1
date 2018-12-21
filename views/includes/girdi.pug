@@ -9,8 +9,8 @@
     {i: "Delta", g: "Delta"},
     {i: "=>", g: "=>"}
   ]
-script()
-  | let icerik = document.querySelector("#icerik")
+script
+  | var icerik
   | function sembolGir(g) {
   |   icerik.setRangeText(
   |     g, icerik.selectionStart, icerik.selectionEnd)
@@ -20,10 +20,12 @@ script()
 style(scoped)
   include girdi.css
 #dugmeler
-  for dugme in dugmeler
-    button(type="button" href="javascript:void(0)" onclick!="sembolGir(\'"+dugme.g+"')")
-      div(class="dugme") `#{dugme.i}`
+  ul(id="menu-closed")
+    for dugme in dugmeler
+      li
+        a(href="#" onclick!="sembolGir(\'"+dugme.g+"')") `#{dugme.i}`
 
 input(type="submit" value="Gönder")
 input#yazan(type="text" name="Yazan" placeholder="Adınız")
 input#icerik(type="text" name="İçerik" placeholder="İçerik" autocomplete="off")
+script icerik = document.querySelector("#icerik")
