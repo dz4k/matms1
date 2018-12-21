@@ -23,7 +23,7 @@ form {
 }
 
 
-input {
+input, textarea {
   border: none;
   height: 2.5rem;
   resize: none;
@@ -31,7 +31,7 @@ input {
   font-size: 14px;
 }
 
-input[type=text] {
+input[type=text], textarea {
   background-color: white;
   border: none;
   padding: 5px;
@@ -39,7 +39,7 @@ input[type=text] {
   font-size: 1em;
 }
 
-input#icerik {
+textarea#icerik {
   grid-area: icerik;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
