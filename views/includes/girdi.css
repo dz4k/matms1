@@ -35,6 +35,8 @@ input[type=text] {
   background-color: white;
   border: none;
   padding: 5px;
+  font-family: 'Consolas', 'San Francisco Mono','Inconsolata', 'Courier New', Courier, monospace;
+  font-size: 1em;
 }
 
 input#icerik {
