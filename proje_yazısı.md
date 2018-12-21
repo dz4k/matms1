@@ -187,7 +187,9 @@ Kullanıcı soru veya cevap yazıp "Gönder" butonuna bastığı zaman POST iste
 
 ### 3.5. Proje Ekran Görüntüleri
 
-![](ekran_görüntüleri/1.png)
+![](ekran_görüntüleri/2.png)
+
+![](ekran_görüntüleri/3.png)
 
 ## 4. Sonuçlar ve Tartışma
 
