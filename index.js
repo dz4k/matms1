@@ -37,7 +37,7 @@ async function adaptDoc(belge) {
 }
 
 const app = express()
-const sunucu = app.listen(3000)
+const sunucu = app.listen(process.env.PORT)
 
 app.use(express.static('wwwroot'))
 app.use(bodyParser.urlencoded())
