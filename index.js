@@ -2,7 +2,8 @@
 const express = require("express"),
   admin = require('firebase-admin'),
   // @ts-ignore
-  serviceAccount = require("../serviceAccount.json"),
+  //serviceAccount = require("../serviceAccount.json"),
+  serviceAccount = JSON.parse(process.env.SERVICE),
   bodyParser = require("body-parser")
 
 admin.initializeApp({
