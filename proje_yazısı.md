@@ -40,8 +40,7 @@ __a. Veritabanı oluşturulması__
 __b. Matematik yazımı__
 
 - b.1. MathJax kütüphanesinin kurulumu
-- b.2. MathJax'in Türkçeleştirilmesi
-- b.3. Matematik yazımı için arayüz kodlanması
+- b.2. Matematik yazımı için arayüz kodlanması
 
 __c. Web sitesi__
 
@@ -63,9 +62,7 @@ __c. Web sitesi__
 
 #### b.1. MathJax kütüphanesinin kurulumu
 
-#### b.2. MathJax'in Türkçeleştirilmesi
-
-#### b.3. Matematik yazımı için arayüz kodlanması
+#### b.2. Matematik yazımı için arayüz kodlanması
 
 ### 3.3. Web sitesi
 
