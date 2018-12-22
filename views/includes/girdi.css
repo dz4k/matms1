@@ -11,14 +11,19 @@ form {
   box-shadow: 0 2px 5px;
 }
 
-#dugmeler {
-  background-color: rgb(185, 185, 185);
-  border-top-left-radius: 5px;
-  padding: 10px;
-  color: red;
+
+
+#dugmeler > .dugme {
+  padding: 5px;
+  margin: 5px;
+  width: 2em;
+  background: none;
+  color: black;
+  height: 100%;
 }
 
-input {
+
+input, textarea {
   border: none;
   height: 2.5rem;
   resize: none;
@@ -26,13 +31,15 @@ input {
   font-size: 14px;
 }
 
-input[type=text] {
+input[type=text], textarea {
   background-color: white;
   border: none;
   padding: 5px;
+  font-family: 'Consolas', 'San Francisco Mono','Inconsolata', 'Courier New', Courier, monospace;
+  font-size: 1em;
 }
 
-input#icerik {
+textarea#icerik {
   grid-area: icerik;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
@@ -50,4 +57,44 @@ input[type=submit] {
   border-bottom-right-radius: 0;
   border-top-left-radius: 0;
   padding: 0;
+}
+
+#dugmeler {
+  background-color: rgb(185, 185, 185);
+  border-top-left-radius: 5px;
+  padding: 10px;
+	font-size: 18px;
+	box-shadow: 0 1px 2px rgba(19, 51, 61, 0.5);
+	padding: 0 1em;
+	height: 44px; /* Menu height */
+	overflow: hidden; /* Don't show anything outside the nav */
+}
+
+#dugmeler ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  max-height: 88px; /* Menu height x 2 */
+  position: relative; /* Position the menu button relative to this item */
+}
+
+#dugmeler ul li {
+  display: inline-block;
+}
+
+#dugmeler ul li a {
+  display: inline-block;
+  padding: 0 1em;
+  color: black;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+  line-height: 44px; /* Menu height */
+  height: 44px; /* Menu height */
+}
+
+#dugmeler a:hover {
+  background-color: rgba(255, 255, 255, 0.08);
 }

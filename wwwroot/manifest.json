@@ -1,0 +1,9 @@
+{
+  "name": "MatMS",
+  "short_name": "MatMS",
+  "theme_color": "black",
+  "background_color": "#ededed",
+  "display": "standalone",
+  "scope": "/",
+  "start_url": "/"
+}

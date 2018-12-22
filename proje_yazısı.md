@@ -1,33 +1,23 @@
 # MatMS: Matematik Dersinde Öğrenciler Arasında Yardımlaşma Aracı
 ## 1. Giriş
 
-Öğrenciler akademik hedeflerine ulaşmak için sıkça sınıf arkadaşları ve çevrimiçi topluluklar ile yardımlaşır. Birbiri ile bilgi 
-paylaşan veya zorlandığı konularda birbirine danışan öğrenciler derslerinde daha hızlı ilerleme kaydedebilir. İnternet üzerindeki 
-yardımlaşma platformlarının yetersizlikleri öğrencilere ders çalışırken zorluk oluşturabilir.
+Öğrenciler akademik hedeflerine ulaşmak için sıkça sınıf arkadaşları ve çevrimiçi topluluklar ile yardımlaşır. Birbiri ile bilgi paylaşan veya zorlandığı konularda birbirine danışan öğrenciler derslerinde daha hızlı ilerleme kaydedebilir. İnternet üzerindeki yardımlaşma platformlarının yetersizlikleri öğrencilere ders çalışırken zorluk oluşturabilir.
 
-Bu platformlar matematik ve diğer sayısal derslerde vazgeçilmez olan notasyonu desteklememektedir. Çoğu matematiksel sembolü kullanmak 
-mümkün değildir. Bu duruma karşılık öğrenciler elle yazdıkları ifadelerin çekmekte veya düz metin üzerinden okunaksız ve standarda bağlı 
-olmayan bir biçem kullanmaktadır. İletişim zorluğu ve zaman kaybı görülmektedir. Görme engelli öğrenciler için erişilebilir değildir.
+Bu platformlar matematik ve diğer sayısal derslerde vazgeçilmez olan notasyonu desteklememektedir. Çoğu matematiksel sembolü kullanmak mümkün değildir. Bu duruma karşılık öğrenciler elle yazdıkları ifadelerin çekmekte veya düz metin üzerinden okunaksız ve standarda bağlı olmayan bir biçem kullanmaktadır. İletişim zorluğu ve zaman kaybı görülmektedir. Görme engelli öğrenciler için erişilebilir değildir.
 
-Proje kapsamında mevcut öğrenci yardımlaşma platformlarının belirli kusurlarına çözüm sunulmuştur. Bu kusurlar yetersiz notasyon 
-desteği, dikkat dağıtıcı veya kullanışsız arayüz olarak saptanmıştır.
+Proje kapsamında mevcut öğrenci yardımlaşma platformlarının belirli kusurlarına çözüm sunulmuştur. Bu kusurlar yetersiz notasyon desteği, dikkat dağıtıcı veya kullanışsız arayüz olarak saptanmıştır.
 
 ### 1.1. Projenin Amacı
 
-Projede öğrencilerin internet üzerinden yardımlaşırken ve bilgi alışverişi yaparken  iletişim zorluğu yaşamasına ve zaman kaybı veya 
-dikkat dağınıklığı sorunlarına çözüm bulmak amaçlanmıştır. 
+Projede öğrencilerin internet üzerinden yardımlaşırken ve bilgi alışverişi yaparken  iletişim zorluğu yaşamasına ve zaman kaybı veya dikkat dağınıklığı sorunlarına çözüm bulmak amaçlanmıştır. 
 
 ### 1.2. NodeJS
 
-Node.js, JavaScript için bir çalıştırma ortamıdır. Durdurmayan G/Ç (İng. _non-blocking I/O_) desteğiyle asenkron programlamada 
-kolaylık sağlar. Node.js, V8 JavaScript motorunu kullanır. Standart kütüphanesinde HTTP desteği bulundurduğundan ek bir sunucu 
-yazılımına (Apache HTTP Sunucusu, Nginx, IIS vb.) gerektirmez. Node.js paket yöneticisi npm, dünyanın en büyük yazılım kayıt 
-defteridir (İng. _registry_).
+Node.js, JavaScript için bir çalıştırma ortamıdır. Durdurmayan G/Ç (İng. _non-blocking I/O_) desteğiyle asenkron programlamada kolaylık sağlar. Node.js, V8 JavaScript motorunu kullanır. Standart kütüphanesinde HTTP desteği bulundurduğundan ek bir sunucu yazılımına (Apache HTTP Sunucusu, Nginx, IIS vb.) gerektirmez. Node.js paket yöneticisi npm, dünyanın en büyük yazılım kayıt defteridir (İng. _registry_).
 
 ### 1.3. Express.js
 
-Express.js veya Express, Node.js için özgür açık kaynak kodlu web çatısıdır. 16 Kasım 2010 tarihinde 	TJ Holowaychuk tarafından
-yayınlanmıştır. Web uygulaması veya API geliştirmek için kullanılabilir. Diğer pek çok çatının altyapısını oluşturur. 
+Express.js veya Express, Node.js için özgür açık kaynak kodlu web çatısıdır. 16 Kasım 2010 tarihinde 	TJ Holowaychuk tarafından yayınlanmıştır. Web uygulaması veya API geliştirmek için kullanılabilir. Diğer pek çok çatının altyapısını oluşturur. 
 
 ### 1.5. MathJax
 
@@ -36,9 +26,7 @@ olarak HTML-CSS, SVG ve MathML formatlarını destekler.
 
 ### 1.6. Pug
 
-Pug, HTML için bir önişlemcidir (İng. _preprocessor_). Sunucu veya istemci tarafından derlenebilir. Gömülü JavaScript ifadelerini 
-değerlendirebilir. `for` ve `if` direktifleri ile dinamik içerikli sayfalar oluşturmayı kolaylaştırır. Gramer yapısı 
-kısa ve okunaklı olması için tasarlanmıştır. 
+Pug, HTML için bir önişlemcidir (İng. _preprocessor_). Sunucu veya istemci tarafından derlenebilir. Gömülü JavaScript ifadelerini değerlendirebilir. `for` ve `if` direktifleri ile dinamik içerikli sayfalar oluşturmayı kolaylaştırır. Gramer yapısı kısa ve okunaklı olması için tasarlanmıştır. 
 
 ## 2. Yöntem
 
@@ -195,7 +183,13 @@ app.post("/yanitla", (req, res) => {
   res.redirect("back")
 })
 ```
-Kullanıcı soru veya cevap yazıp "Gönder" butonuna bastığı zaman POST isteği yapılır. Sunucu bunun üzerine öncelikle istekte doğru verinin bulunup bulunmadığını kontrol der. Yok ise 400 ****(Bad Request) hatası ile cevap verir. Aksi takdirde soru veritabanına eklenir ve kullanıcı geri yönlendirilir.
+Kullanıcı soru veya cevap yazıp "Gönder" butonuna bastığı zaman POST isteği yapılır. Sunucu bunun üzerine öncelikle istekte doğru verinin bulunup bulunmadığını kontrol der. Yok ise 400 (Bad Request) hatası ile cevap verir. Aksi takdirde soru veritabanına eklenir ve kullanıcı geri yönlendirilir.
+
+### 3.5. Proje Ekran Görüntüleri
+
+![](ekran_görüntüleri/2.png)
+
+![](ekran_görüntüleri/3.png)
 
 ## 4. Sonuçlar ve Tartışma
 

@@ -1,7 +1,31 @@
+-
+  let dugmeler = [
+    {i: "\\`\\`", g: "``"},
+    {i: "a^b", g: "^(b)"},
+    {i: "a_b", g: "_(b)"},
+    {i: "rootab", g: "root(a)(b)"},
+    {i: "a^@", g: "^@"},
+    {i: "veca", g: "veca"},
+    {i: "Delta", g: "Delta"},
+    {i: "=>", g: "=>"}
+  ]
+script
+  | var icerik
+  | function sembolGir(g) {
+  |   icerik.setRangeText(
+  |     g, icerik.selectionStart, icerik.selectionEnd)
+  |   icerik.focus()
+  |   return false
+  | }
 style(scoped)
   include girdi.css
 #dugmeler
-  | TODO:
+  ul(id="menu-closed")
+    for dugme in dugmeler
+      li
+        a(href="#" onclick!="sembolGir(\'"+dugme.g+"')") `#{dugme.i}`
+
 input(type="submit" value="Gönder")
 input#yazan(type="text" name="Yazan" placeholder="Adınız")
-input#icerik(type="text" name="İçerik" placeholder="Yanıtınız")
+textarea#icerik(name="İçerik" placeholder="İçerik" autocomplete="off" multiline)
+script icerik = document.querySelector("#icerik")

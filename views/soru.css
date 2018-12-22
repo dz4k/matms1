@@ -1,5 +1,15 @@
 .yanit {
-    margin: 5px;
-    padding-bottom:15px;
-    border-bottom: 1px solid black !important;
-  }
+  
+  margin: 5px;
+  padding-bottom:15px;
+  border-bottom: 1px solid black !important;
+}
+
+.yanit > p {
+  font-size: 1.2em;
+  white-space: pre-wrap;
+}
+
+.yanit > em {
+  font-size: 1em;
+}
