@@ -47,7 +47,7 @@ __c. Web sitesi__
 - c.1. Anasayfa yapılması
 - c.2. Soru görüntüleme sayfasının yapılması
 - c.3. Arama özelliğinin eklenmesi
-- c.4. Dinamik içeriğin küllanıcıya sunumu
+- c.4. Dinamik içeriğin kullanıcıya sunumu
 - c.5. Soru sormak ve cevap vermek için yol oluşturulması
 
 ## 3. Bulgular ve Gerçekleşme
