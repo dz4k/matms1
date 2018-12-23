@@ -130,11 +130,11 @@ async function belgeUyarla(belge) {
   return {
     ...belge.data(),
     id: belge.ref.id,
-    yanitlar: (await belge.ref.collection("Yanıtlar")
-      .listDocuments()
+    yanitlar: belge.ref.collection("Yanıtlar")
+      .orderBy("Zaman")
+      .get()
       .then(refler =>
-        Promise.all(refler.map(ref => ref.get()))
-      )).map(snapshot => snapshot.data())
+        refler.docs.map(snapshot => snapshot.data()))
   }
 }
 ```

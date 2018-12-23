@@ -24,15 +24,14 @@ db.settings({
  * @returns {Promise} arayüz için veri
  */
 async function adaptDoc(belge) {
-  // TODO: refactor
   return {
     ...belge.data(),
     id: belge.ref.id,
-    yanitlar: (await belge.ref.collection("Yanıtlar")
-      .listDocuments()
+    yanitlar: belge.ref.collection("Yanıtlar")
+      .orderBy("Zaman")
+      .get()
       .then(refler =>
-        Promise.all(refler.map(ref => ref.get()))
-      )).map(snapshot => snapshot.data())
+        refler.docs.map(snapshot => snapshot.data()))
   }
 }
 
@@ -76,7 +75,11 @@ app.post("/soru", (req, res) => {
   ) {
     return res.send(400/*Bad Request*/)
   }
-  db.collection("Sorular").add(req.body)
+  db.collection("Sorular").add({
+    "Yazan": req.body["Yazan"],
+    "İçerik": req.body["İçerik"],
+    "Zaman": admin.firestore.Timestamp.now()
+  })
   res.status(200)
   res.redirect("back")
 })
@@ -93,7 +96,8 @@ app.post("/yanitla", (req, res) => {
   .doc(req.query.id)
     .collection("Yanıtlar").add({
       "Yazan": req.body["Yazan"],
-      "İçerik": req.body["İçerik"]
+      "İçerik": req.body["İçerik"],
+      "Zaman": admin.firestore.Timestamp.now()
     })
   res.status(200)
   res.redirect("back")
