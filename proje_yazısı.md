@@ -130,7 +130,7 @@ async function belgeUyarla(belge) {
   return {
     ...belge.data(),
     id: belge.ref.id,
-    yanitlar: belge.ref.collection("Yanıtlar")
+    yanitlar: belge.ref.collection("Yanıtlar", "desc")
       .orderBy("Zaman")
       .get()
       .then(refler =>
@@ -152,7 +152,7 @@ app.set('view engine', 'pug')
 Express ile sunucu oluşturulur. POST isteklerinden form verilerini okumak için `bodyParser.urlEncoded` kullanılır.
 ```javascript
 app.get("/", (req, res) => {
-  db.collection("Sorular").orderBy("Zaman").get().then(
+  db.collection("Sorular").orderBy("Zaman", "desc").get().then(
     (snapshot) => {
       let belgeler = snapshot.docs.map(belgeUyarla)
       Promise.all(belgeler).then(sorular =>
