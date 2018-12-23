@@ -27,7 +27,7 @@ async function adaptDoc(belge) {
   return {
     ...belge.data(),
     id: belge.ref.id,
-    yanitlar: belge.ref.collection("Yanıtlar")
+    yanitlar: await belge.ref.collection("Yanıtlar")
       .orderBy("Zaman", "desc")
       .get()
       .then(refler =>
