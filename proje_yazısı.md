@@ -46,9 +46,8 @@ __c. Web sitesi__
 
 - c.1. Anasayfa yapılması
 - c.2. Soru görüntüleme sayfasının yapılması
-- c.3. Arama özelliğinin eklenmesi
-- c.4. Dinamik içeriğin kullanıcıya sunumu
-- c.5. Soru sormak ve cevap vermek için yol oluşturulması
+- c.3. Dinamik içeriğin kullanıcıya sunumu
+- c.4. Soru sormak ve cevap vermek için yol oluşturulması
 
 ## 3. Bulgular ve Gerçekleşme
 
@@ -56,25 +55,56 @@ __c. Web sitesi__
 
 #### a.1. Firebase kurulumu
 
+Projede Firebase tarafından sunulan belge tabanlı Firestore veritabanı kulllanılmıştır. Firestore'un özellikleri belirli bir şemaya bağlı olmaması ve yalnızca hızlı biçimde yapılabilecek işlemlere izin vermesidir. 
+
+Veritabanındaki belgelerin yapısı aşağıdaki gibidir:
+
+|Alan    |Tür       |
+|--------|----------|
+|Yazan   |dize      |
+|İçerik  |dize      |
+|Zaman   |zaman     |
+|Yanıtlar|koleksiyon|
+
+Her sorunun Yanıtlar koleksiyonu aşağıdaki gibi belgeler içermektedir:
+
+|Alan    |Tür       |
+|--------|----------|
+|Yazan   |dize      |
+|İçerik  |dize      |
+|Zaman   |zaman     |
+
 #### a.2. Admin SDK kurulumu
+
+Node.js sunucumuzdan veritabanına erişim sağlayabilmek için Firebase Admin SDK kullanılmıştır. 
 
 ### 3.2. Matematik yazımı
 
 #### b.1. MathJax kütüphanesinin kurulumu
 
+Sayfalara MathJax eklenerek formüllerin gösterilmesi sağlanmıştır. Kütüphanenin Türkçe versiyonu kullanılmıştır.
+
 #### b.2. Matematik yazımı için arayüz kodlanması
+
+Kullanıcılar AsciiMath ve LaTeX kodlarını bilmeyebilir veya unutabilir. Bu sebeple soru sorma ve yanıtlama kısımlarına sıkça kullanılan sembolleri yazmak için düğmeler eklenmiştir.
 
 ### 3.3. Web sitesi
 
 #### c.1. Anasayfa yapılması
 
+Site Express.js ile yapılmıştır. Anasayfada sorulmuş sorulara bakmak ve yeni soru sormak mümkündür. 
+
 #### c.2. Soru görüntüleme sayfasının yapılması
 
-#### c.3. Arama özelliğinin eklenmesi
+Her sorunun sayfasında sorunun içeriği, yazan kişi ve verilmiş yanıtlar gösterilir. Soruya bu sayfadan yanıt verilebilir.
 
-#### c.4. Dinamik içeriğin küllanıcıya sunumu
+#### c.3. Dinamik içeriğin kullanıcıya sunumu
 
-#### c.5. Soru sormak ve cevap vermek için yol oluşturulması
+Veritabanından soru ve yanıtlar okunup Pug şablonları kullanılarak HTML sayfasına dökülür. Şablon kullanmak metin parçacıklarından sayfa oluşturma gereğini ortadan kaldırır ve kullanıcıların sorularında siteye HTML enjekte etmesine engel olur.
+
+#### c.4. Soru sormak ve cevap vermek için yol oluşturulması
+
+Sayfadan form/submit yoluyla soru sorulabilmektedir. Soruların sunucu tarafından doğrulanır ve gerekli veriyi bulunduruyorsa (yazan, içerik) veritabanında kayıt oluşturulur.
 
 ### 3.4. Proje Kodlarının Açıklanması
 
@@ -157,7 +187,11 @@ app.post("/soru", (req, res) => {
   ) {
     return res.send(400/*Bad Request*/)
   }
-  db.collection("Sorular").add(req.body)
+  db.collection("Sorular").add({
+    "Yazan": req.body["Yazan"],
+    "İçerik": req.body["İçerik"],
+    "Zaman": admin.firestore.Timestamp.now()
+  })
   res.status(200)
   res.redirect("back")
 })
@@ -174,7 +208,8 @@ app.post("/yanitla", (req, res) => {
   .doc(req.query.id)
     .collection("Yanıtlar").add({
       "Yazan": req.body["Yazan"],
-      "İçerik": req.body["İçerik"]
+      "İçerik": req.body["İçerik"],
+      "Zaman": admin.firestore.Timestamp.now()
     })
   res.status(200)
   res.redirect("back")
