@@ -152,7 +152,7 @@ app.set('view engine', 'pug')
 Express ile sunucu oluşturulur. POST isteklerinden form verilerini okumak için `bodyParser.urlEncoded` kullanılır.
 ```javascript
 app.get("/", (req, res) => {
-  db.collection("Sorular").get().then(
+  db.collection("Sorular").orderBy("Zaman").get().then(
     (snapshot) => {
       let belgeler = snapshot.docs.map(belgeUyarla)
       Promise.all(belgeler).then(sorular =>

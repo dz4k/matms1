@@ -44,7 +44,7 @@ app.set('views', './views')
 app.set('view engine', 'pug')
 
 app.get("/", (req, res) => {
-  db.collection("Sorular").get().then(
+  db.collection("Sorular").orderBy("Zaman").get().then(
     (snapshot) => {
       let belgeler = snapshot.docs.map(adaptDoc)
       Promise.all(belgeler).then(sorular =>
