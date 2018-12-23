@@ -3,9 +3,13 @@ const express = require("express"),
   admin = require('firebase-admin'),
   // @ts-ignore
   //serviceAccount = require("../serviceAccount.json"),
-  serviceAccount = process.env.SERVICEACCOUNT,
   bodyParser = require("body-parser")
 
+let serviceAccount
+
+  if(process.env.SERVICEACCOUNT.startsWith("{")) {
+    serviceAccount = JSON.parse(process.env.SERVICEACCOUNT)
+  } else { serviceAccount = process.env.SERVICEACCOUNT }
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
   databaseURL: "https://mat-ms.firebaseio.com"
