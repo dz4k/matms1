@@ -28,7 +28,7 @@ async function adaptDoc(belge) {
     ...belge.data(),
     id: belge.ref.id,
     yanitlar: belge.ref.collection("Yanıtlar")
-      .orderBy("Zaman")
+      .orderBy("Zaman", "desc")
       .get()
       .then(refler =>
         refler.docs.map(snapshot => snapshot.data()))
@@ -44,7 +44,7 @@ app.set('views', './views')
 app.set('view engine', 'pug')
 
 app.get("/", (req, res) => {
-  db.collection("Sorular").orderBy("Zaman").get().then(
+  db.collection("Sorular").orderBy("Zaman", "desc").get().then(
     (snapshot) => {
       let belgeler = snapshot.docs.map(adaptDoc)
       Promise.all(belgeler).then(sorular =>
