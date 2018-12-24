@@ -5,11 +5,9 @@ const express = require("express"),
   //serviceAccount = require("../serviceAccount.json"),
   bodyParser = require("body-parser")
 
-let serviceAccount
-
-  if(process.env.SERVICEACCOUNT.startsWith("{")) {
-    serviceAccount = JSON.parse(process.env.SERVICEACCOUNT)
-  } else { serviceAccount = process.env.SERVICEACCOUNT }
+let serviceAccount = process.env.SERVICEACCOUNT.startsWith("{") ?
+  JSON.parse(process.env.SERVICEACCOUNT) :
+  process.env.SERVICEACCOUNT
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
   databaseURL: "https://mat-ms.firebaseio.com"
@@ -61,23 +59,23 @@ app.get("/", (req, res) => {
 })
 
 app.get("/soru", (req, res) => {
-    db.collection("Sorular")
+  db.collection("Sorular")
     .doc(req.query.id).get().then((snapshot) => {
-        if (!snapshot.data) return res.status(404);
-        adaptDoc(snapshot).then((soru) => {
-          res.render(__dirname + "/views/soru.pug", {soru})
+      if (!snapshot.data) return res.status(404);
+      adaptDoc(snapshot).then((soru) => {
+        res.render(__dirname + "/views/soru.pug", {
+          soru
         })
-      }
-    )
-  }
-)
+      })
+    })
+})
 
 app.post("/soru", (req, res) => {
-  if (!req.body || 
-    typeof req.body["Yazan"] !== "string" || 
+  if (!req.body ||
+    typeof req.body["Yazan"] !== "string" ||
     typeof req.body["İçerik"] !== "string"
   ) {
-    return res.send(400/*Bad Request*/)
+    return res.send(400 /*Bad Request*/ )
   }
   db.collection("Sorular").add({
     "Yazan": req.body["Yazan"],
@@ -97,7 +95,7 @@ app.post("/yanitla", (req, res) => {
     return res.status(400)
   }
   db.collection("Sorular")
-  .doc(req.query.id)
+    .doc(req.query.id)
     .collection("Yanıtlar").add({
       "Yazan": req.body["Yazan"],
       "İçerik": req.body["İçerik"],
