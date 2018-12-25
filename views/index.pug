@@ -13,13 +13,7 @@ block content
   style
     include index.css
   
-  #sorular
-    for soru in sorular
-      a(href="/soru?id="+soru.id) 
-        .soru
-          .icerik= soru["İçerik"]
-          br
-          span #{soru["Yazan"]},<em> #{soru.yanitlar.length} cevap </em>
+  #sorular(ic-get-from="/sorular" ic-poll="5s")
 
   script
     include includes/index.pug.js

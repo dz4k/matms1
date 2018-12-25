@@ -46,11 +46,15 @@ app.set('views', './views')
 app.set('view engine', 'pug')
 
 app.get("/", (req, res) => {
+  res.render("index.pug", {cache: true})
+})
+
+app.get("/sorular", (req, res) => {
   db.collection("Sorular").orderBy("Zaman", "desc").get().then(
     (snapshot) => {
       let belgeler = snapshot.docs.map(adaptDoc)
       Promise.all(belgeler).then(sorular =>
-        res.render(__dirname + "/views/index.pug", {
+        res.render(__dirname + "/views/sorular.pug", {
           sorular
         })
       )
