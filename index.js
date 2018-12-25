@@ -31,7 +31,7 @@ let yanitlarDepo = new Map()
  * @param {FirebaseFirestore.DocumentSnapshot} belge 
  * @returns {Promise} arayüz için veri
  */
-async function adaptDoc(belge) {
+async function belgeUyarla(belge) {
   return {
     ...belge.data(),
     id: belge.ref.id,
@@ -51,7 +51,7 @@ async function adaptDoc(belge) {
 let sorular
 db.collection("Sorular").orderBy("Zaman", "desc").onSnapshot(
   async (snapshot) => {
-    sorular = await Promise.all(snapshot.docs.map(adaptDoc))
+    sorular = await Promise.all(snapshot.docs.map(belgeUyarla))
   })
 
 
@@ -85,7 +85,7 @@ app.get("/soru", (req, res) => {
   db.collection("Sorular")
     .doc(req.query.id).get().then(async (snapshot) => {
       if (!snapshot.data) return res.status(404);
-      let rendered = soruTemplate({ soru: await adaptDoc(snapshot) })
+      let rendered = soruTemplate({ soru: await belgeUyarla(snapshot) })
       mjpage.mjpage(rendered,
         { format: ["AsciiMath"], output: "html" }, {}, sonuç => res.send(sonuç))
     })

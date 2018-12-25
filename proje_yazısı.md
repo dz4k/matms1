@@ -82,7 +82,7 @@ Node.js sunucumuzdan veritabanına erişim sağlayabilmek için Firebase Admin S
 
 #### b.1. MathJax kütüphanesinin kurulumu
 
-Sayfalara MathJax eklenerek formüllerin gösterilmesi sağlanmıştır. Kütüphanenin Türkçe versiyonu kullanılmıştır.
+Sayfalara MathJax eklenerek formüllerin gösterilmesi sağlanmıştır. Formüllerin yazımı için kolay olduğundan AsciiMath kullanılmıştır.
 
 #### b.2. Matematik yazımı için arayüz kodlanması
 
@@ -112,10 +112,15 @@ Sayfadan form/submit yoluyla soru sorulabilmektedir. Soruların sunucu tarafınd
 
 ```javascript
 const express = require("express"),
+  cors = require("cors"),
   admin = require('firebase-admin'),
-  serviceAccount = require("../serviceAccount.json"),
-  bodyParser = require("body-parser")
+  bodyParser = require("body-parser"),
+  mjpage = require("mathjax-node-page"),
+  pug = require("pug")
 
+let serviceAccount = process.env.SERVICEACCOUNT.startsWith("{") ?
+  JSON.parse(process.env.SERVICEACCOUNT) :
+  process.env.SERVICEACCOUNT
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
   databaseURL: "https://mat-ms.firebaseio.com"
@@ -126,20 +131,37 @@ const db = admin.firestore()
 İlk iş olarak kullanılacak kütüphaneler belirtilir. Firebase ile bağlantı kurulur ve veritabanına erişilir. 
 
 ```javascript
+let yanitlarDepo = new Map()
+
 async function belgeUyarla(belge) {
   return {
     ...belge.data(),
     id: belge.ref.id,
-    yanitlar: await belge.ref.collection("Yanıtlar")
-      .orderBy("Zaman", "desc")
-      .get()
-      .then(refler =>
-        refler.docs.map(snapshot => snapshot.data()))
+    yanitlar: yanitlarDepo.has(belge.ref.id)
+      ? yanitlarDepo.get(belge.ref.id)
+      : await belge.ref.collection("Yanıtlar")
+        .orderBy("Zaman", "desc")
+        .get()
+        .then(refler => {
+          let rv = refler.docs.map(snapshot => snapshot.data())
+          yanitlarDepo.set(belge.ref.id, rv)
+          return rv
+        })
   }
 }
 ```
 `belgeUyarla` fonksiyonunun amacı veritabanındaki belgelerden sayfada gösterilecek bilgileri çıkartmaktır.
-Bu fonksiyon ileride kullanılacaktır.
+Veritabanının yükünü azaltmak ve uygulamayı daha hızlı yapmak adına soruların yanıtları hafızada depolanır. Bu fonksiyon ileride kullanılacaktır.
+
+```javascript
+let sorular
+db.collection("Sorular").orderBy("Zaman", "desc").onSnapshot(
+  async (snapshot) => {
+    sorular = await Promise.all(snapshot.docs.map(belgeUyarla))
+  })
+
+```
+Yeni soru eklendiğinde `sorular` değişkeninin güncellenmesi sağlanır.
 ```javascript
 const app = express()
 const sunucu = app.listen(3000)
@@ -148,35 +170,37 @@ app.use(express.static('wwwroot'))
 app.use(bodyParser.urlencoded())
 app.set('views', './views')
 app.set('view engine', 'pug')
+
+let indexTemplate = pug.compileFile(__dirname + "\\views\\index.pug", { cache: true })
+let sorularTemplate = pug.compileFile(__dirname + "\\views\\sorular.pug")
+let soruTemplate = pug.compileFile(__dirname + "\\views\\soru.pug")
+
+mjpage.init()
 ```
-Express ile sunucu oluşturulur. POST isteklerinden form verilerini okumak için `bodyParser.urlEncoded` kullanılır.
+Express ile sunucu oluşturulur. POST isteklerinden form verilerini okumak için `bodyParser.urlEncoded` kullanılır. Pug şablonları önceden derlenir.
 ```javascript
 app.get("/", (req, res) => {
-  db.collection("Sorular").orderBy("Zaman", "desc").get().then(
-    (snapshot) => {
-      let belgeler = snapshot.docs.map(belgeUyarla)
-      Promise.all(belgeler).then(sorular =>
-        res.render(__dirname + "/views/index.pug", {
-          sorular
-        })
-      )
-    }
-  )
+  res.send(indexTemplate({}))
+})
+
+app.get("/sorular", (req, res) => {
+  let compiled = sorularTemplate({ sorular: sorular })
+  mjpage.mjpage(compiled, { format: ["AsciiMath"], output: "html" }, {}, mjrendered => {
+    res.send(mjrendered)
+  })
 })
 ```
-Anasayfaya erişildiğinde veritabanından sorular alınır. Soruların hepsinin uyarlanması beklenir. Son olarak sayfa oluşturulur ve kullanıcıya gönderilir.
+Anasayfadan istek gönderildiğinde veritabanından sorular alınır. Sorulardaki matematik ifadeleri çizilir. Son olarak sayfa oluşturulur ve kullanıcıya gönderilir.
 ```javascript
-app.get("/soru/", (req, res) => {
-    db.collection("Sorular")
-    .doc(req.query.id).get().then((snapshot) => {
-        if (!snapshot.data) return res.status(404);
-        belgeUyarla(snapshot).then((soru) => {
-          res.render(__dirname + "/views/soru.pug", {soru})
-        })
-      }
-    )
-  }
-)
+app.get("/soru", (req, res) => {
+  db.collection("Sorular")
+    .doc(req.query.id).get().then(async (snapshot) => {
+      if (!snapshot.data) return res.status(404);
+      let rendered = soruTemplate({ soru: await belgeUyarla(snapshot) })
+      mjpage.mjpage(rendered,
+        { format: ["AsciiMath"], output: "html" }, {}, sonuç => res.send(sonuç))
+    })
+})
 ```
 Kullanıcı belirli bir soruya tıkladığında bu rotaya erişir. İstenen soru mevcut değilse 404 hatası verilir. Aksi takdirde soru verilerini içeren belge uyarlanır ve sayfa oluşturulur.
 ```javascript
