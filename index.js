@@ -4,7 +4,8 @@ const express = require("express"),
   admin = require('firebase-admin'),
   bodyParser = require("body-parser"),
   mjpage = require("mathjax-node-page"),
-  pug = require("pug")
+  pug = require("pug"),
+  path = require("path")
 
 let serviceAccount = process.env.SERVICEACCOUNT.startsWith("{") ?
   JSON.parse(process.env.SERVICEACCOUNT) :
@@ -64,9 +65,11 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.set('views', './views')
 app.set('view engine', 'pug')
 
-let indexTemplate = pug.compileFile(__dirname + "\\views\\index.pug", { cache: true })
-let sorularTemplate = pug.compileFile(__dirname + "\\views\\sorular.pug")
-let soruTemplate = pug.compileFile(__dirname + "\\views\\soru.pug")
+let s = path.sep
+
+let indexTemplate = pug.compileFile(__dirname + `${s}views${s}index.pug`, { cache: true })
+let sorularTemplate = pug.compileFile(__dirname + `${s}views${s}sorular.pug`)
+let soruTemplate = pug.compileFile(__dirname + `${s}views${s}soru.pug`)
 
 mjpage.init()
 
