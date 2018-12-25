@@ -21,6 +21,11 @@ db.settings({
 // Sunucu
 
 /**
+ * @type {Map<String, Object[]>}
+ */
+let yanitlarDepo = new Map()
+
+/**
  * 
  * @param {FirebaseFirestore.DocumentSnapshot} belge 
  * @returns {Promise} arayüz için veri
@@ -29,11 +34,16 @@ async function adaptDoc(belge) {
   return {
     ...belge.data(),
     id: belge.ref.id,
-    yanitlar: await belge.ref.collection("Yanıtlar")
-      .orderBy("Zaman", "desc")
-      .get()
-      .then(refler =>
-        refler.docs.map(snapshot => snapshot.data()))
+    yanitlar: yanitlarDepo.has(belge.ref.id) 
+      ? yanitlarDepo.get(belge.ref.id) 
+      : await belge.ref.collection("Yanıtlar")
+        .orderBy("Zaman", "desc")
+        .get()
+        .then(refler => {
+          let rv = refler.docs.map(snapshot => snapshot.data())
+          yanitlarDepo.set(belge.ref.id, rv)
+          return rv
+        })
   }
 }
 
@@ -42,6 +52,8 @@ db.collection("Sorular").orderBy("Zaman", "desc").onSnapshot(
   async (snapshot) => {
     sorular = await Promise.all(snapshot.docs.map(adaptDoc))
   })
+
+
 
 const app = express()
 const sunucu = app.listen(process.env.PORT)
