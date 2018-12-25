@@ -37,6 +37,12 @@ async function adaptDoc(belge) {
   }
 }
 
+let sorular
+db.collection("Sorular").orderBy("Zaman", "desc").onSnapshot(
+  async (snapshot) => {
+    sorular = await Promise.all(snapshot.docs.map(adaptDoc))
+  })
+
 const app = express()
 const sunucu = app.listen(process.env.PORT)
 
@@ -46,20 +52,13 @@ app.set('views', './views')
 app.set('view engine', 'pug')
 
 app.get("/", (req, res) => {
-  res.render("index.pug", {cache: true})
+  res.render("index.pug", { cache: true })
 })
 
 app.get("/sorular", (req, res) => {
-  db.collection("Sorular").orderBy("Zaman", "desc").get().then(
-    (snapshot) => {
-      let belgeler = snapshot.docs.map(adaptDoc)
-      Promise.all(belgeler).then(sorular =>
-        res.render(__dirname + "/views/sorular.pug", {
-          sorular
-        })
-      )
-    }
-  )
+  res.render(__dirname + "/views/sorular.pug", {
+    sorular
+  })
 })
 
 app.get("/soru", (req, res) => {
@@ -79,7 +78,7 @@ app.post("/soru", (req, res) => {
     typeof req.body["Yazan"] !== "string" ||
     typeof req.body["İçerik"] !== "string"
   ) {
-    return res.send(400 /*Bad Request*/ )
+    return res.send(400 /*Bad Request*/)
   }
   db.collection("Sorular").add({
     "Yazan": req.body["Yazan"],
