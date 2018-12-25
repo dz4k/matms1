@@ -1,9 +1,10 @@
 //@ts-check
 const express = require("express"),
+  cors = require("cors"),
   admin = require('firebase-admin'),
-  // @ts-ignore
-  //serviceAccount = require("../serviceAccount.json"),
-  bodyParser = require("body-parser")
+  bodyParser = require("body-parser"),
+  mjpage = require("mathjax-node-page"),
+  pug = require("pug")
 
 let serviceAccount = process.env.SERVICEACCOUNT.startsWith("{") ?
   JSON.parse(process.env.SERVICEACCOUNT) :
@@ -34,8 +35,8 @@ async function adaptDoc(belge) {
   return {
     ...belge.data(),
     id: belge.ref.id,
-    yanitlar: yanitlarDepo.has(belge.ref.id) 
-      ? yanitlarDepo.get(belge.ref.id) 
+    yanitlar: yanitlarDepo.has(belge.ref.id)
+      ? yanitlarDepo.get(belge.ref.id)
       : await belge.ref.collection("Yanıtlar")
         .orderBy("Zaman", "desc")
         .get()
@@ -59,29 +60,34 @@ const app = express()
 const sunucu = app.listen(process.env.PORT)
 
 app.use(express.static('wwwroot'))
-app.use(bodyParser.urlencoded())
+app.use(bodyParser.urlencoded({ extended: true }))
 app.set('views', './views')
 app.set('view engine', 'pug')
 
+let indexTemplate = pug.compileFile(__dirname + "\\views\\index.pug", { cache: true })
+let sorularTemplate = pug.compileFile(__dirname + "\\views\\sorular.pug")
+let soruTemplate = pug.compileFile(__dirname + "\\views\\soru.pug")
+
+mjpage.init()
+
 app.get("/", (req, res) => {
-  res.render("index.pug", { cache: true })
+  res.send(indexTemplate({}))
 })
 
 app.get("/sorular", (req, res) => {
-  res.render(__dirname + "/views/sorular.pug", {
-    sorular
+  let compiled = sorularTemplate({ sorular: sorular })
+  mjpage.mjpage(compiled, { format: ["AsciiMath"], output: "html" }, {}, mjrendered => {
+    res.send(mjrendered)
   })
 })
 
 app.get("/soru", (req, res) => {
   db.collection("Sorular")
-    .doc(req.query.id).get().then((snapshot) => {
+    .doc(req.query.id).get().then(async (snapshot) => {
       if (!snapshot.data) return res.status(404);
-      adaptDoc(snapshot).then((soru) => {
-        res.render(__dirname + "/views/soru.pug", {
-          soru
-        })
-      })
+      let rendered = soruTemplate({ soru: await adaptDoc(snapshot) })
+      mjpage.mjpage(rendered,
+        { format: ["AsciiMath"], output: "html" }, {}, sonuç => res.send(sonuç))
     })
 })
 
