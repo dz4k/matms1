@@ -1,12 +1,10 @@
 extends includes/root.pug
-
+include includes/girdi.pug
 
 block topbar
   button#btn Soru sor
   #girdi.hidden
-    - let postUrl = "../soru"
-    form(method="POST" action=postUrl)
-      include includes/girdi.pug
+    +girdi(post-to="../soru")
     
 block content
   

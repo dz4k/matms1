@@ -1,6 +1,6 @@
 for soru in sorular
   a(href="/soru?id="+soru.id) 
-    .soru
+    .soru.card
       .icerik= soru["İçerik"]
       br
       span #{soru["Yazan"]},<em> #{soru.yanitlar.length} cevap </em>
