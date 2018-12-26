@@ -1,4 +1,4 @@
+index.js
 node_modules/*
 node_modules/.bin/semver
-index.js
 index.js.map
