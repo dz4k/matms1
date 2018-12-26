@@ -1,12 +1,11 @@
-import { QuerySnapshot, DocumentData, DocumentSnapshot } from "@google-cloud/firestore";
+import * as express from "express"
+import * as admin from 'firebase-admin'
+import { QuerySnapshot, DocumentData, DocumentSnapshot } from "@google-cloud/firestore"
+import * as bodyParser from "body-parser"
+import mjpage from "mathjax-node-page"
+import pug from "pug"
+import * as path from "path"
 
-const express = require("express"),
-  cors = require("cors"),
-  admin = require('firebase-admin'),
-  bodyParser = require("body-parser"),
-  mjpage = require("mathjax-node-page"),
-  pug = require("pug"),
-  path = require("path")
 
 let serviceAccount = process.env.SERVICEACCOUNT[0] == "{" ?
   JSON.parse(process.env.SERVICEACCOUNT) :
@@ -50,7 +49,7 @@ async function belgeUyarla(belge: DocumentSnapshot) {
   }
 }
 
-let sorular
+let sorular: Object[]
 db.collection("Sorular").orderBy("Zaman", "desc").onSnapshot(
   async (snapshot) => {
     sorular = await Promise.all(snapshot.docs.map(belgeUyarla))
@@ -58,7 +57,7 @@ db.collection("Sorular").orderBy("Zaman", "desc").onSnapshot(
 
 
 
-const app = express()
+const app: express.Express = express()
 const sunucu = app.listen(process.env.PORT)
 
 app.use(express.static('wwwroot'))
