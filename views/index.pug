@@ -4,15 +4,37 @@ include includes/girdi.pug
 block topbar
   button#btn Soru sor
   #girdi.hidden
-    +girdi(post-to="../soru")
+    +girdi("/soru")
     
 block content
   
-  style
-    include index.css
-  
   #sorular(ic-get-from="/sorular" ic-poll="10s" ic-trigger-on="load")
 
-  script
-    include includes/index.pug.js
+  script.
+    let btn = document.querySelector("#btn")
+    let girdi = document.querySelector("#girdi")
+
+    btn.onclick = () => {
+      girdi.classList.contains("hidden")
+        ? girdi.classList.remove("hidden")
+        : girdi.classList.add("hidden")
+    }
     
+  style.
+    #btn {
+      height: 2.5em;
+    }
+
+    #sor {
+      padding: 5px;
+    }
+
+    a {
+      text-decoration-line: none;
+      color: black;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+

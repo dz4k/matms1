@@ -1,0 +1,74 @@
+.girdi {
+  grid-area: form;
+  margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: 80% 20%;
+  grid-template-areas:
+    "dugmeler  gonder"
+    "yazan     yazan "
+    "icerik    icerik";
+  border-radius: 5px;
+  box-shadow: 0 2px 5px;
+}
+
+.girdi #dugmeler .dugme {
+  padding: 5px;
+  margin: 5px;
+  width: 2em;
+  background: none;
+  color: black;
+  height: 100%;
+}
+
+.girdi input, textarea {
+  border: none;
+  height: 2.5rem;
+  resize: none;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+.girdi .text {
+  background-color: white;
+  border: none;
+  padding: 5px;
+  font-family: 'Consolas', 'San Francisco Mono','Inconsolata', 'Courier New', Courier, monospace;
+  font-size: 1em;
+}
+
+.girdi #icerik {
+  grid-area: icerik;
+  height: auto;
+}
+
+.girdi #yazan {
+  grid-area: yazan;
+  border-bottom: 1px solid gray;
+}
+
+.girdi input[type=submit] {
+  height: 100%;
+  grid-area: gonder;
+  margin-left: 10px;
+}
+
+.girdi #dugmeler ul {
+  margin: 0;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 18px;
+  list-style-type: none;
+  max-height: 88px;
+  height: 44px;
+  overflow: hidden;
+  background-color: rgb(185, 185, 185);
+}
+
+.girdi #dugmeler ul li {
+  display: inline-block;
+  padding: 0 0.8em;
+  color: black;
+  text-decoration: none;
+  line-height: 22px; /* Menu height */
+  height: 44px; /* Menu height */
+}

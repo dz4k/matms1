@@ -26,5 +26,8 @@
   "bugs": {
     "url": "https://github.com/deniz-a/matms/issues"
   },
-  "homepage": "https://github.com/deniz-a/matms#readme"
+  "homepage": "https://github.com/deniz-a/matms#readme",
+  "devDependencies": {
+    "@types/pug": "^2.0.4"
+  }
 }

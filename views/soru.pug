@@ -1,21 +1,43 @@
 extends includes/root.pug
+include includes/girdi.pug
+
 block topbar 
-  a(href="/" style="display: block; font-size: 18px; margin-bottom: 20px; color: black;")
-    | `larr " Anasayfa"`
+  a.anasayfa(href="/").
+    `larr` Anasayfa
 block content
-    .soru.card
-        .icerik= soru["İçerik"]
-        br
-        span #{soru["Yazan"]},<em> #{soru.yanitlar.length} cevap </em>
-    #yanitla
-        - let postUrl = "../yanitla?id=" + soru.id
-        form(method="POST" action=postUrl)
-            include includes/girdi.pug
-    #yanitlar
-        for yanit in soru.yanitlar
-            .yanit
-                p=yanit["İçerik"]
-                em=yanit["Yazan"]
-    style
-        include soru.css
-                
+  .soru.card
+    .icerik= soru["İçerik"]
+    br
+    span #{soru["Yazan"]},<em> #{soru.yanitlar.length} cevap </em>
+  #yanitla
+    - let postUrl = "/yanitla?id=" + soru.id
+    +girdi(postUrl)
+      
+  #yanitlar
+    for yanit in soru.yanitlar
+      .yanit
+        p=yanit["İçerik"]
+        em=yanit["Yazan"]
+  style.
+    .yanit {
+      margin: 5px;
+      padding-bottom:15px;
+      border-bottom: 1px solid black !important;
+    }
+
+    .yanit > p {
+      font-size: 1.2em;
+      white-space: pre-wrap;
+    }
+
+    .yanit > em {
+      font-size: 1em;
+    }
+
+    a.anasayfa{
+      text-decoration: none;
+      font-size: 18px; 
+      margin-bottom: 20px; 
+      color: black;
+    }
+        

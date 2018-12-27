@@ -2,8 +2,8 @@ import * as express from "express"
 import * as admin from 'firebase-admin'
 import { QuerySnapshot, DocumentData, DocumentSnapshot } from "@google-cloud/firestore"
 import * as bodyParser from "body-parser"
-import mjpage from "mathjax-node-page"
-import pug from "pug"
+import * as mjpage from "mathjax-node-page"
+import * as pug from "pug"
 import * as path from "path"
 
 
@@ -22,30 +22,18 @@ db.settings({
 
 // Sunucu
 
-let yanitlarDepo = {}
-
 async function belgeUyarla(belge: DocumentSnapshot) {
-
-  function yanitlarOku(snapshot: QuerySnapshot): DocumentData {
-    let rv = snapshot.docs.map(ref => ref.data())
-    yanitlarDepo[belge.ref.id] = rv
-    return rv
-  }
-
-  let yanitlar: DocumentData
-  if (yanitlarDepo[belge.ref.id]) {
-    yanitlar = yanitlarDepo[belge.ref.id]
-  } else {
-    let query = belge.ref.collection("Yanıtlar")
-      .orderBy("Zaman", "desc")
-    yanitlar = await query.get().then(yanitlarOku)
-    query.onSnapshot(yanitlarOku)
-  }
-
   return {
     ...belge.data(),
     id: belge.ref.id,
-    yanitlar
+    yanitlar: await belge.ref.collection("Yanıtlar")
+      .orderBy("Zaman", "desc")
+      .get()
+      .then(yanitlarOku)
+  }
+
+  function yanitlarOku(snapshot: QuerySnapshot): DocumentData[] {
+    return snapshot.docs.map(doc => doc.data())
   }
 }
 
@@ -70,8 +58,6 @@ let s = path.sep
 let indexTemplate = pug.compileFile(__dirname + `${s}views${s}index.pug`, { cache: true })
 let sorularTemplate = pug.compileFile(__dirname + `${s}views${s}sorular.pug`)
 let soruTemplate = pug.compileFile(__dirname + `${s}views${s}soru.pug`)
-
-mjpage.init()
 
 app.get("/", (req, res) => {
   let compiled = indexTemplate({})
