@@ -133,25 +133,22 @@ const db = admin.firestore()
 ```javascript
 let yanitlarDepo = new Map()
 
-async function belgeUyarla(belge) {
+async function belgeUyarla(belge: DocumentSnapshot) {
   return {
     ...belge.data(),
     id: belge.ref.id,
-    yanitlar: yanitlarDepo.has(belge.ref.id)
-      ? yanitlarDepo.get(belge.ref.id)
-      : await belge.ref.collection("Yanıtlar")
-        .orderBy("Zaman", "desc")
-        .get()
-        .then(refler => {
-          let rv = refler.docs.map(snapshot => snapshot.data())
-          yanitlarDepo.set(belge.ref.id, rv)
-          return rv
-        })
+    yanitlar: await belge.ref.collection("Yanıtlar")
+      .orderBy("Zaman", "desc")
+      .get()
+      .then(yanitlarOku)
+  }
+
+  function yanitlarOku(snapshot: QuerySnapshot): DocumentData[] {
+    return snapshot.docs.map(doc => doc.data())
   }
 }
 ```
-`belgeUyarla` fonksiyonunun amacı veritabanındaki belgelerden sayfada gösterilecek bilgileri çıkartmaktır.
-Veritabanının yükünü azaltmak ve uygulamayı daha hızlı yapmak adına soruların yanıtları hafızada depolanır. Bu fonksiyon ileride kullanılacaktır.
+`belgeUyarla` fonksiyonunun amacı veritabanındaki belgelerden sayfada gösterilecek bilgileri çıkartmaktır. Bu fonksiyon ileride kullanılacaktır.
 
 ```javascript
 let sorular
