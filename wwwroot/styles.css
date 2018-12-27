@@ -63,4 +63,13 @@ button, input[type=submit] {
   height: 2.5rem;
 }
 
+a {
+  text-decoration-line: none;
+  color: black;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
 .hidden { display: none; }
