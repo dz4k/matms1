@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Old+Standard+TT');
+/* @import url('https://fonts.googleapis.com/css?family=Old+Standard+TT'); */
 
 body {
   display: grid;
@@ -28,8 +28,14 @@ header {
   }
 }
 * {
-  font-family: "Old Standard TT", serif;
+  font-family: "MJXc-TeX-main-Rw", serif;
   box-sizing: border-box;
+}
+em {
+  font-family: "MJXc-TeX-main-Iw", serif;
+}
+strong {
+  font-family: "MJXc-TeX-main-Bw"
 }
 header {
   grid-area: baslik;
