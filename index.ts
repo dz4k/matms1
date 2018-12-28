@@ -5,6 +5,7 @@ import * as bodyParser from "body-parser"
 import * as mjpage from "mathjax-node-page"
 import * as pug from "pug"
 import * as path from "path"
+import compression from "compression"
 
 
 let serviceAccount = process.env.SERVICEACCOUNT[0] == "{" ?

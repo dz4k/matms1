@@ -5,5 +5,17 @@
   "background_color": "#ededed",
   "display": "standalone",
   "scope": "/",
-  "start_url": "/"
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "/images/matms.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    },
+    {
+      "src": "/images/matms-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ]
 }

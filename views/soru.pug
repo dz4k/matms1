@@ -1,9 +1,13 @@
 extends includes/root.pug
 include includes/girdi.pug
 
+block desc
+  meta(name="Description" content=soru["İçerik"]+" - "+soru.yanitlar.length+" yanıt")
+
 block topbar 
   a.anasayfa(href="/").
     `larr` Anasayfa
+
 block content
   .soru.card
     .icerik= soru["İçerik"]
