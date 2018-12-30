@@ -20,6 +20,8 @@
     "cors": "^2.8.5",
     "express": "^4.16.3",
     "firebase-admin": "^6.4.0",
+    "intercooler": "^1.2.1",
+    "jquery": "^3.3.1",
     "mathjax-node-page": "^3.0.1",
     "path": "^0.12.7",
     "pug": "^2.0.3"

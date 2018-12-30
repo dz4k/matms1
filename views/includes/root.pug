@@ -22,17 +22,23 @@ html(lang="tr")
     block desc
     style
       include styles.css
-    script(defer type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js")
-    script(defer type="text/javascript" src="https://intercoolerreleases-leaddynocom.netdna-ssl.com/intercooler-1.2.1.min.js")
+    //script(type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js")
+    //script(defer type="text/javascript" src="https://intercoolerreleases-leaddynocom.netdna-ssl.com/intercooler-1.2.1.min.js")
+    
     title MatMS
 body
     header
       h1 MatMS
+      a(id="add-to-home" onclick="addToHome()")
       #topbar
         block topbar
     #container
       #content
         block content
+    script
+      include ..\..\node_modules\jquery\dist\jquery.min.js
+    script
+      include ..\..\node_modules\intercooler\dist\intercooler.js
     script.
       //This is the "Offline copy of pages" service worker
 
@@ -48,7 +54,20 @@ body
         });
       }
 
+      let addToHomeA = document.querySelector("#add-to-home")
+      let addToHomeEvt
+
       window.addEventListener('beforeinstallprompt', (e) => {
-         e.preventDefault();
-         e.prompt();
-      });
+        e.preventDefault()
+        addToHomeEvt = e
+        addToHomeA.classList.remove("hidden")
+      })
+
+      window.addEventListener('appinstalled', (evt) => {
+        installed = true
+        addToHomeA.classList.add("hidden")
+      })
+
+      function addToHome() {
+        addToHomeEvt.prompt()
+      }
