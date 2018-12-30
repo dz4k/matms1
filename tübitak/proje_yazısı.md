@@ -1,33 +1,89 @@
 # MatMS: Matematik Dersinde Öğrenciler Arasında Yardımlaşma Aracı
+
+# Proje Özeti
+
+Öğrenciler için ders konusunda çevrimiçi bilgi alışverişi ve yardımlaşma platformları matematik konusunda yetersiz kalmaktadır. Öğrenciler matemetik sembollerini kullanamadığından iletişim zorluğu çekebilir. Öğrenciler bu sorun karşısında elle yazdıkları matematik notasyonunun fotoğrafını çekip gönderme yoluna başvurabilse de bu ideal bir çözüm değildir ve görme engeli olan öğrencilerin erişimine kapalıdır. Bu sebeplerden dolayı projede matematiksel ifadeleri destekleyen bir yardımlaşma ortamı geliştirerek öğrencilerin matematik dersinde başarısına katkıda bulunmak amaçlanmıştır. .
+
+# Proje Raporu
+
+|                                           |Eylül|Ekim|Kasım|Aralık|
+|-------------------------------------------|-----|----|-----|------|
+|Kullanılacak teknolojilerin belirlenmesi   |X    |    |     |      |
+|Site kullanıcı arayüzünün tasarlanması     |X    |    |     |      |
+|Site arayüzünün kodlanması                 |X    |X   |     |      |
+|Sitenin sunucu tarafı kodlarının yazılması |     |x   |x    |x     |
+
+## İçindekiler
+
+- [MatMS: Matematik Dersinde Öğrenciler Arasında Yardımlaşma Aracı](#matms-matematik-dersinde-Öğrenciler-arasında-yardımlaşma-aracı)
+- [Proje Özeti](#proje-Özeti)
+- [Proje Raporu](#proje-raporu)
+  - [İçindekiler](#İçindekiler)
+  - [1. Giriş](#1-giriş)
+    - [1.1. Projenin Amacı](#11-projenin-amacı)
+    - [1.2. Node.js](#12-nodejs)
+    - [1.3. Express.js](#13-expressjs)
+    - [1.5. MathJax](#15-mathjax)
+    - [1.6. Pug](#16-pug)
+  - [1.7. Intercooler.js](#17-intercoolerjs)
+  - [2. Yöntem](#2-yöntem)
+    - [2.1 Proje Yapım Basamakları](#21-proje-yapım-basamakları)
+  - [3. Bulgular ve Gerçekleşme](#3-bulgular-ve-gerçekleşme)
+    - [3.1 Veritabanı oluşturulması](#31-veritabanı-oluşturulması)
+      - [a.1. Firebase kurulumu](#a1-firebase-kurulumu)
+      - [a.2. Admin SDK kurulumu](#a2-admin-sdk-kurulumu)
+    - [3.2. Matematik yazımı](#32-matematik-yazımı)
+      - [b.1. MathJax kütüphanesinin kurulumu](#b1-mathjax-kütüphanesinin-kurulumu)
+      - [b.2. Matematik yazımı için arayüz kodlanması](#b2-matematik-yazımı-için-arayüz-kodlanması)
+    - [3.3. Web sitesi](#33-web-sitesi)
+      - [c.1. Anasayfa yapılması](#c1-anasayfa-yapılması)
+      - [c.2. Soru görüntüleme sayfasının yapılması](#c2-soru-görüntüleme-sayfasının-yapılması)
+      - [c.3. Dinamik içeriğin kullanıcıya sunumu](#c3-dinamik-içeriğin-kullanıcıya-sunumu)
+      - [c.4. Soru sormak ve cevap vermek için yol oluşturulması](#c4-soru-sormak-ve-cevap-vermek-için-yol-oluşturulması)
+    - [3.4. Proje Kodlarının Açıklanması](#34-proje-kodlarının-açıklanması)
+      - [3.4.1 index.js](#341-indexjs)
+      - [girdi.pug](#girdipug)
+    - [3.5. Proje Ekran Görüntüleri](#35-proje-ekran-görüntüleri)
+  - [4. Sonuçlar ve Tartışma](#4-sonuçlar-ve-tartışma)
+  - [5. Öneriler](#5-Öneriler)
+  - [Kaynakça](#kaynakça)
+
+<div style="page-break-after: always;"></div>
+
 ## 1. Giriş
 
-Öğrenciler akademik hedeflerine ulaşmak için sıkça sınıf arkadaşları ve çevrimiçi topluluklar ile yardımlaşır. Birbiri ile bilgi paylaşan veya zorlandığı konularda birbirine danışan öğrenciler derslerinde daha hızlı ilerleme kaydedebilir. İnternet üzerindeki yardımlaşma platformlarının yetersizlikleri öğrencilere ders çalışırken zorluk oluşturabilir.
+Öğrenciler akademik hedeflerine ulaşmak için sıkça sınıf arkadaşları yardımlaşır (Çalışkan ve Çınar, 2010). Birbiri ile bilgi paylaşan veya zorlandığı konularda birbirine danışan öğrenciler derslerinde daha hızlı ilerleme kaydedebilir. İnternet üzerindeki yardımlaşma platformlarının yetersizlikleri öğrencilere ders çalışırken zorluk oluşturabilir.
 
 Bu platformlar matematik ve diğer sayısal derslerde vazgeçilmez olan notasyonu desteklememektedir. Çoğu matematiksel sembolü kullanmak mümkün değildir. Bu duruma karşılık öğrenciler elle yazdıkları ifadelerin çekmekte veya düz metin üzerinden okunaksız ve standarda bağlı olmayan bir biçem kullanmaktadır. İletişim zorluğu ve zaman kaybı görülmektedir. Görme engelli öğrenciler için erişilebilir değildir.
 
 Proje kapsamında mevcut öğrenci yardımlaşma platformlarının belirli kusurlarına çözüm sunulmuştur. Bu kusurlar yetersiz notasyon desteği, dikkat dağıtıcı veya kullanışsız arayüz olarak saptanmıştır.
 
+Proje mobil cihazlarda kullanıma uygundur. Kurulum gerektirmeden internet üzerinden kullanılabilir. İsteyen kullanıcılar uygulamayı cihazlarının ana ekranına ekleyebilir. 
+
 ### 1.1. Projenin Amacı
 
 Projede öğrencilerin internet üzerinden yardımlaşırken ve bilgi alışverişi yaparken  iletişim zorluğu yaşamasına ve zaman kaybı veya dikkat dağınıklığı sorunlarına çözüm bulmak amaçlanmıştır. 
 
-### 1.2. NodeJS
+### 1.2. Node.js
 
-Node.js, JavaScript için bir çalıştırma ortamıdır. Durdurmayan G/Ç (İng. _non-blocking I/O_) desteğiyle asenkron programlamada kolaylık sağlar. Node.js, V8 JavaScript motorunu kullanır. Standart kütüphanesinde HTTP desteği bulundurduğundan ek bir sunucu yazılımına (Apache HTTP Sunucusu, Nginx, IIS vb.) gerektirmez. Node.js paket yöneticisi npm, dünyanın en büyük yazılım kayıt defteridir (İng. _registry_).
+Node.js, JavaScript için bir çalıştırma ortamıdır. Durdurmayan G/Ç (İng. _non-blocking I/O_) desteğiyle asenkron programlamada kolaylık sağlar. Node.js, V8 JavaScript motorunu kullanır. Standart kütüphanesinde HTTP desteği bulundurduğundan ek bir sunucu yazılımına (Apache HTTP Sunucusu, Nginx, IIS vb.) gerektirmez (Senkpiel, 2016). Node.js paket yöneticisi npm, dünyanın en büyük yazılım kayıt defteridir (İng. _registry_) ("About npm", 2018).
 
 ### 1.3. Express.js
 
-Express.js veya Express, Node.js için özgür açık kaynak kodlu web çatısıdır. 16 Kasım 2010 tarihinde 	TJ Holowaychuk tarafından yayınlanmıştır. Web uygulaması veya API geliştirmek için kullanılabilir. Diğer pek çok çatının altyapısını oluşturur. 
+Express.js veya Express, Node.js için özgür açık kaynak kodlu web çatısıdır. 16 Kasım 2010 tarihinde 	TJ Holowaychuk tarafından yayınlanmıştır (Vorbach, 2018). Web uygulaması veya API geliştirmek için kullanılabilir. Diğer pek çok çatının altyapısını oluşturur. 
 
 ### 1.5. MathJax
 
 MathJax, matematiksel ifadelerin çizimi için bir JavaScript kütüphanesidir. Girdi olarak TeX, MathML ve AsciiMath; çıktı 
-olarak HTML-CSS, SVG ve MathML formatlarını destekler. 
+olarak HTML-CSS, SVG ve MathML formatlarını destekler (Cuellar ve Topping, 2013).
 
 ### 1.6. Pug
 
-Pug, HTML için bir önişlemcidir (İng. _preprocessor_). Sunucu veya istemci tarafından derlenebilir. Gömülü JavaScript ifadelerini değerlendirebilir. `for` ve `if` direktifleri ile dinamik içerikli sayfalar oluşturmayı kolaylaştırır. Gramer yapısı kısa ve okunaklı olması için tasarlanmıştır. 
+Pug, HTML için bir önişlemcidir (İng. _preprocessor_). Sunucu veya istemci tarafından derlenebilir. Gömülü JavaScript ifadelerini değerlendirebilir. `for` ve `if` direktifleri ile dinamik içerikli sayfalar oluşturmayı kolaylaştırır. Gramer yapısı kısa ve okunaklı olması için tasarlanmıştır (Hiwarale, 2018).
 
+## 1.7. Intercooler.js
+
+Intercooler.js veya kısaca Intercooler, geliştiricilere kod yazmadan HTML öznitelikleri ile uygulamalara AJAX desteği ekleme olanağı sunan bir JavaScript kütüphanesidir. (Gross, 2018)
 ## 2. Yöntem
 
 ### 2.1 Proje Yapım Basamakları
@@ -86,7 +142,7 @@ Sayfalara MathJax eklenerek formüllerin gösterilmesi sağlanmıştır. Formül
 
 #### b.2. Matematik yazımı için arayüz kodlanması
 
-Kullanıcılar AsciiMath ve LaTeX kodlarını bilmeyebilir veya unutabilir. Bu sebeple soru sorma ve yanıtlama kısımlarına sıkça kullanılan sembolleri yazmak için düğmeler eklenmiştir.
+Kullanıcılar AsciiMath kodlarını bilmeyebilir veya unutabilir. Bu sebeple soru sorma ve yanıtlama kısımlarına sıkça kullanılan sembolleri yazmak için düğmeler eklenmiştir.
 
 ### 3.3. Web sitesi
 
@@ -118,9 +174,7 @@ const express = require("express"),
   mjpage = require("mathjax-node-page"),
   pug = require("pug")
 
-let serviceAccount = process.env.SERVICEACCOUNT.startsWith("{") ?
-  JSON.parse(process.env.SERVICEACCOUNT) :
-  process.env.SERVICEACCOUNT
+let serviceAccount = JSON.parse(process.env.SERVICEACCOUNT) :
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
   databaseURL: "https://mat-ms.firebaseio.com"
@@ -128,7 +182,8 @@ admin.initializeApp({
 
 const db = admin.firestore()
 ```
-İlk iş olarak kullanılacak kütüphaneler belirtilir. Firebase ile bağlantı kurulur ve veritabanına erişilir. 
+İlk iş olarak kullanılacak kütüphaneler belirtilir.
+Firebase admin sertifikası ortam değişkeninden okunur. Firebase ile bağlantı kurulur ve veritabanına erişilir. 
 
 ```javascript
 let yanitlarDepo = new Map()
@@ -238,6 +293,45 @@ app.post("/yanitla", (req, res) => {
 ```
 Kullanıcı soru veya cevap yazıp "Gönder" butonuna bastığı zaman POST isteği yapılır. Sunucu bunun üzerine öncelikle istekte doğru verinin bulunup bulunmadığını kontrol der. Yok ise 400 (Bad Request) hatası ile cevap verir. Aksi takdirde soru veritabanına eklenir ve kullanıcı geri yönlendirilir.
 
+#### girdi.pug
+```pug
+-
+  let dugmeler = [
+    {i: "\\`\\`", g: "``"},
+    {i: "a^b", g: "^(b)"},
+    {i: "a_b", g: "_(b)"},
+    {i: "rootab", g: "root(a)(b)"},
+    {i: "a^@", g: "^@"},
+    {i: "veca", g: "veca"},
+    {i: "Delta", g: "Delta"},
+    {i: "=>", g: "=>"},
+    {i: "{::}^({::}_int)", g: "int"}
+  ]
+form.girdi.card(action=postTo method="POST")
+  #dugmeler
+    ul(id="menu-closed")
+      for dugme in dugmeler
+        li.dugme
+          a(href="#" 
+            onclick!="sembolGir('"+dugme.g+"')").
+            `#{dugme.i}`
+
+  input(type="submit" value="Gönder")
+  input.text#yazan(type="text" name="Yazan" placeholder="Adınız")
+  textarea.text#icerik(name="İçerik" placeholder="İçerik" autocomplete="off")
+
+  script.
+
+    var icerik = document.querySelector("#icerik")
+    function sembolGir(g) {
+      icerik.setRangeText(
+        g, icerik.selectionStart, icerik.selectionEnd)
+      icerik.focus()
+      return false
+    }
+    
+```
+Sunulacak düğmeler sunucu Javascript kodunda tanımlanmıştır. `for` direktifi ile düğmelerin HTML kodu oluşturulmuştur. Her düğme tıklandığında belirli bir sembolün AsciiMath kodunu imlecin konumuna girer. Bu sayede kullanıcılar bu kodları ezberlemek zorunda kalmaz.
 ### 3.5. Proje Ekran Görüntüleri
 
 ![Anasayfa](ekran_görüntüleri/2.png)
@@ -266,8 +360,14 @@ Yeni sorular soruldukça uygulamanın canlı olarak bu soruları göstermesi sa�
 Çalışkan, T., & Çınar, S. (2010). Akran Desteği: Öğrencilerin Sınıf Ortamı Ve Uygulama Alanlarında Birbirleriyle Yardımlaşma 
 Durumlarının Değerlendirilmesi. _Maltepe Üniversitesi Hemşirelik Bilim ve Sanatı Dergisi, Sempozyum Özel Sayısı_, 226-233.
 
-Senkpiel, J., (2016). Node v7.2.0 (Current). 16 Aralık 2018 tarihinde erişildi. [https://nodejs.org/en/blog/release/v7.2.0/]
+Senkpiel, J., (2016). Node v7.2.0 (Current). 16 Aralık 2018 tarihinde erişildi. https://nodejs.org/en/blog/release/v7.2.0/
 
-_About npm_. NPM. 16 Aralık 2018 tarihinde erişildi. [https://www.npmjs.com/about].
+_About npm_. NPM. 16 Aralık 2018 tarihinde erişildi. https://www.npmjs.com/about.
 
-Vorbach,P., npm-stat: download statistics for NPM packages. npm-stat. 16 Aralık 2018 tarihinde erişildi. [https://npm-stat.com/charts.html?package=express&from=1970-01-31&to=2018-12-03]
+Vorbach,P., npm-stat: download statistics for NPM packages. npm-stat. 16 Aralık 2018 tarihinde erişildi. https://npm-stat.com/charts.html?package=express&from=1970-01-31&to=2018-12-03
+
+Gross, C., intercooler.js. 30 Aralık 2018 tarihinde erişildi. https://intercoolerjs.org
+
+Hiwarale, U., Pug.js to make your life easier with HTML templates, itnext. 30 Aralık 2018 tarihinde erişildi. https://itnext.io/pug-js-to-make-your-life-easier-with-html-templates-9c62273626e0
+
+ Cuellar, A. ve Topping, P., (2013, Haziran). What you need to know about the Maths Stack. XML London'da sunulan bildiri. Erişim adresi: https://xmllondon.com/2013/xmllondon-2013-proceedings.pdf#page=63
