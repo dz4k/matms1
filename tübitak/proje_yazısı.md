@@ -1,5 +1,3 @@
-# MatMS: Matematik Dersinde Öğrenciler Arasında Yardımlaşma Aracı
-
 # Proje Planı
 
 ## 1. Amaç ve Kapsam
@@ -50,7 +48,6 @@ Gross, C., intercooler.js. 30 Aralık 2018 tarihinde erişildi. https://intercoo
 
 ## İçindekiler
 
-- [MatMS: Matematik Dersinde Öğrenciler Arasında Yardımlaşma Aracı](#matms-matematik-dersinde-Öğrenciler-arasında-yardımlaşma-aracı)
 - [Proje Planı](#proje-planı)
   - [1. Amaç ve Kapsam](#1-amaç-ve-kapsam)
   - [2. Yöntem ve Gereçler](#2-yöntem-ve-gereçler)
@@ -61,7 +58,7 @@ Gross, C., intercooler.js. 30 Aralık 2018 tarihinde erişildi. https://intercoo
   - [Kaynaklar:](#kaynaklar)
   - [Proje Adı:](#proje-adı)
   - [İçindekiler](#İçindekiler)
-- [Özet](#Özet)
+  - [Özet](#Özet)
   - [1. Giriş](#1-giriş)
     - [1.1. Projenin Amacı](#11-projenin-amacı)
     - [1.2. Node.js](#12-nodejs)
@@ -93,7 +90,7 @@ Gross, C., intercooler.js. 30 Aralık 2018 tarihinde erişildi. https://intercoo
 
 <div style="page-break-after: always;"></div>
 
-# Özet
+## Özet
 
 Öğrenciler için ders konusunda çevrimiçi bilgi alışverişi ve yardımlaşma platformları matematik konusunda yetersiz kalmaktadır. Öğrenciler matematik sembollerini kullanamadığından iletişim zorluğu çekebilir. Öğrenciler bu sorun karşısında elle yazdıkları matematik notasyonunun fotoğrafını çekip gönderme yoluna başvurabilse de bu ideal bir çözüm değildir ve görme engeli olan öğrencilerin erişimine kapalıdır. Bu sebeplerden dolayı projede matematiksel ifadeleri destekleyen bir yardımlaşma ortamı geliştirerek öğrencilerin matematik dersinde başarısına katkıda bulunmak amaçlanmıştır. 
 
