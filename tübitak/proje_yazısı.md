@@ -2,7 +2,9 @@
 
 # Proje Özeti
 
-Öğrenciler için ders konusunda çevrimiçi bilgi alışverişi ve yardımlaşma platformları matematik konusunda yetersiz kalmaktadır. Öğrenciler matemetik sembollerini kullanamadığından iletişim zorluğu çekebilir. Öğrenciler bu sorun karşısında elle yazdıkları matematik notasyonunun fotoğrafını çekip gönderme yoluna başvurabilse de bu ideal bir çözüm değildir ve görme engeli olan öğrencilerin erişimine kapalıdır. Bu sebeplerden dolayı projede matematiksel ifadeleri destekleyen bir yardımlaşma ortamı geliştirerek öğrencilerin matematik dersinde başarısına katkıda bulunmak amaçlanmıştır. .
+Öğrenciler için ders konusunda çevrimiçi bilgi alışverişi ve yardımlaşma platformları matematik konusunda yetersiz kalmaktadır. Öğrenciler matemetik sembollerini kullanamadığından iletişim zorluğu çekebilir. Öğrenciler bu sorun karşısında elle yazdıkları matematik notasyonunun fotoğrafını çekip gönderme yoluna başvurabilse de bu ideal bir çözüm değildir ve görme engeli olan öğrencilerin erişimine kapalıdır. Bu sebeplerden dolayı projede matematiksel ifadeleri destekleyen bir yardımlaşma ortamı geliştirerek öğrencilerin matematik dersinde başarısına katkıda bulunmak amaçlanmıştır. 
+
+Express.js ve Intercooler ile yapılan uygulama PWA standardına uygundur. Bu sebeple mobil kullanıma elverişlidir ve tarayıcı üzerinden veya cihaza kurularak kullanılabilir. Uygulamada kullanıcılar AsciiMath dili ile matematik sembollerini ifade edebilmektedir. Matematik sembollerinin çizimi için MathJax kullanılmıştır. Kullanıcılar soru sorabilmekte ve sorulmuş sorulara cevap verebilmektedir.
 
 # Proje Raporu
 
