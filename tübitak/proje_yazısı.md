@@ -29,6 +29,19 @@ Arayüzün kullanıcıya sunulması, verinin kullanıcı arayüzünde gösterilm
 | Uygulama arayüzünün kodlanması                 | X     | X    |       |        |
 | Uygulamanın sunucu tarafı kodlarının yazılması |       | x    | x     | x      |
 
+## Kaynaklar:
+
+Çalışkan, T., & Çınar, S. (2010). Akran Desteği: Öğrencilerin Sınıf Ortamı Ve Uygulama Alanlarında Birbirleriyle Yardımlaşma 
+Durumlarının Değerlendirilmesi. _Maltepe Üniversitesi Hemşirelik Bilim ve Sanatı Dergisi, Sempozyum Özel Sayısı_, 226-233.
+
+Senkpiel, J., (2016). Node v7.2.0 (Current). 16 Aralık 2018 tarihinde erişildi. https://nodejs.org/en/blog/release/v7.2.0/
+
+_About npm_. NPM. 16 Aralık 2018 tarihinde erişildi. https://www.npmjs.com/about.
+
+Vorbach,P., npm-stat: download statistics for NPM packages. npm-stat. 16 Aralık 2018 tarihinde erişildi. https://npm-stat.com/charts.html?package=express&from=1970-01-31&to=2018-12-03
+
+Gross, C., intercooler.js. 30 Aralık 2018 tarihinde erişildi. https://intercoolerjs.org
+
 <div style="page-break-after: always;"></div>
 
 ## Proje Adı:
@@ -45,6 +58,7 @@ Arayüzün kullanıcıya sunulması, verinin kullanıcı arayüzünde gösterilm
     - [2.2. Veri tabanı oluşturulması](#22-veri-tabanı-oluşturulması)
     - [2.3. Sunucu tarafı kod yazılması](#23-sunucu-tarafı-kod-yazılması)
   - [3. İş-Zaman Tablosu](#3-İş-zaman-tablosu)
+  - [Kaynaklar:](#kaynaklar)
   - [Proje Adı:](#proje-adı)
   - [İçindekiler](#İçindekiler)
 - [Özet](#Özet)
@@ -160,6 +174,8 @@ Veri tabanındaki belgelerin yapısı aşağıdaki gibidir:
 | Zaman    | zaman      |
 | Yanıtlar | koleksiyon |
 
+**Tablo 1.** _Veritabanında soru kayıtlarının yapısı_
+
 Her sorunun Yanıtlar koleksiyonu aşağıdaki gibi belgeler içermektedir:
 
 | Alan   | Tür   |
@@ -167,6 +183,8 @@ Her sorunun Yanıtlar koleksiyonu aşağıdaki gibi belgeler içermektedir:
 | Yazan  | dize  |
 | İçerik | dize  |
 | Zaman  | zaman |
+
+**Tablo 1.** _Veritabanında yanıt kayıtlarının yapısı_
 
 #### a.2. Admin SDK kurulumu
 
@@ -375,9 +393,15 @@ Sunulacak düğmeler sunucu JavaScript kodunda tanımlanmıştır. `for` direkti
 
 ![Mobil Anasayfa](1.png)
 
+**Görsel 1.** _Mobil anasayfa_
+
 ![Anasayfa](2.png)
 
+**Görsel 2.** _Anasayfa_
+
 ![Soru](3.png)
+
+**Görsel 3.** _Soru sayfası_
 
 ## 4. Sonuçlar ve Tartışma
 
