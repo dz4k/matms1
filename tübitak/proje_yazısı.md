@@ -1,13 +1,17 @@
 # MatMS: Matematik Dersinde Öğrenciler Arasında Yardımlaşma Aracı
 
-# Proje Özeti
+# Proje Planı
 
-Öğrenciler için ders konusunda çevrimiçi bilgi alışverişi ve yardımlaşma platformları matematik konusunda yetersiz kalmaktadır. Öğrenciler matemetik sembollerini kullanamadığından iletişim zorluğu çekebilir. Öğrenciler bu sorun karşısında elle yazdıkları matematik notasyonunun fotoğrafını çekip gönderme yoluna başvurabilse de bu ideal bir çözüm değildir ve görme engeli olan öğrencilerin erişimine kapalıdır. Bu sebeplerden dolayı projede matematiksel ifadeleri destekleyen bir yardımlaşma ortamı geliştirerek öğrencilerin matematik dersinde başarısına katkıda bulunmak amaçlanmıştır. 
+## 1. Amaç ve Kapsam
 
-Express.js ve Intercooler ile yapılan uygulama PWA standardına uygundur. Bu sebeple mobil kullanıma elverişlidir ve tarayıcı üzerinden veya cihaza kurularak kullanılabilir. Uygulamada kullanıcılar AsciiMath dili ile matematik sembollerini ifade edebilmektedir. Matematik sembollerinin çizimi için MathJax kullanılmıştır. Kullanıcılar soru sorabilmekte ve sorulmuş sorulara cevap verebilmektedir.
+Öğrencilerin yardımlaşması için matematiksel notasyon desteği bulunduran bir uygulama yapılacaktır. Sıradan soru-cevap platformlarındaki iletişim zorluğu ve erişilebilir olmama sorunlarının önüne geçerek öğrencilere ve matematik öğretmenlerine yardımlaşma konusunda destek olmak
+amaçlanmıştır. 
 
-# Proje Raporu
+## 2. Yöntem ve Gereçler
 
+
+
+## 3. İş-Zaman Tablosu
 |                                           |Eylül|Ekim|Kasım|Aralık|
 |-------------------------------------------|-----|----|-----|------|
 |Kullanılacak teknolojilerin belirlenmesi   |X    |    |     |      |
@@ -15,12 +19,22 @@ Express.js ve Intercooler ile yapılan uygulama PWA standardına uygundur. Bu se
 |Site arayüzünün kodlanması                 |X    |X   |     |      |
 |Sitenin sunucu tarafı kodlarının yazılması |     |x   |x    |x     |
 
+<div style="page-break-after: always;"></div>
+
+## Proje Adı:
+
+**MatMS: Matematik Dersinde Öğrenciler Arasında Yardımlaşma Aracı**
+
 ## İçindekiler
 
 - [MatMS: Matematik Dersinde Öğrenciler Arasında Yardımlaşma Aracı](#matms-matematik-dersinde-Öğrenciler-arasında-yardımlaşma-aracı)
-- [Proje Özeti](#proje-Özeti)
-- [Proje Raporu](#proje-raporu)
+- [Proje Planı](#proje-planı)
+  - [1. Amaç ve Kapsam](#1-amaç-ve-kapsam)
+  - [2. Yöntem ve Gereçler](#2-yöntem-ve-gereçler)
+  - [3. İş-Zaman Tablosu](#3-İş-zaman-tablosu)
+  - [Proje Adı:](#proje-adı)
   - [İçindekiler](#İçindekiler)
+- [Özet](#Özet)
   - [1. Giriş](#1-giriş)
     - [1.1. Projenin Amacı](#11-projenin-amacı)
     - [1.2. Node.js](#12-nodejs)
@@ -51,6 +65,16 @@ Express.js ve Intercooler ile yapılan uygulama PWA standardına uygundur. Bu se
   - [Kaynakça](#kaynakça)
 
 <div style="page-break-after: always;"></div>
+
+# Özet
+
+Öğrenciler için ders konusunda çevrimiçi bilgi alışverişi ve yardımlaşma platformları matematik konusunda yetersiz kalmaktadır. Öğrenciler matemetik sembollerini kullanamadığından iletişim zorluğu çekebilir. Öğrenciler bu sorun karşısında elle yazdıkları matematik notasyonunun fotoğrafını çekip gönderme yoluna başvurabilse de bu ideal bir çözüm değildir ve görme engeli olan öğrencilerin erişimine kapalıdır. Bu sebeplerden dolayı projede matematiksel ifadeleri destekleyen bir yardımlaşma ortamı geliştirerek öğrencilerin matematik dersinde başarısına katkıda bulunmak amaçlanmıştır. 
+
+Kullanıcı arayüzü Pug şablon motoru, CSS ve Intercooler.js ile yapılan uygulama PWA standardına uygundur. Bu sebeple mobil kullanıma elverişlidir ve tarayıcı üzerinden veya cihaza kurularak kullanılabilir. Uygulamada kullanıcılar AsciiMath dili ile matematik sembollerini ifade edebilmektedir. Matematik sembollerinin çizimi için MathJax kullanılmıştır. Kullanıcılar soru sorabilmekte ve sorulmuş sorulara cevap verebilmektedir.
+
+Uygulamanın kaynak kodu Node.js ile yazılmış ve Express.js web altyapısı kullanılmıştır. Veritabanı olarak Cloud Firestore tercih edilmiştir. Matematik ifadelerinin çizimi sunucuda yapılarak kullanıcının MathJax kütüphanesini indirmek zorunda kalmasının önüne geçilmiş ve uygulama daha hızlı kılınmıştır. 
+
+Kullanıcıların soru sorması ve sorulmuş soruları cevaplandırması için bir uygulama yapılmıştır. Matematiksel notasyon desteği deneyen öğrenciler tarafından yeterli bulunmuştur. Öğrenciler dışında öğretmenler için de öğrencilerinin eğitimini destekleyerek fayda sağlayabilecek bir uygulamadır.
 
 ## 1. Giriş
 
@@ -334,13 +358,22 @@ form.girdi.card(action=postTo method="POST")
     
 ```
 Sunulacak düğmeler sunucu Javascript kodunda tanımlanmıştır. `for` direktifi ile düğmelerin HTML kodu oluşturulmuştur. Her düğme tıklandığında belirli bir sembolün AsciiMath kodunu imlecin konumuna girer. Bu sayede kullanıcılar bu kodları ezberlemek zorunda kalmaz.
+
 ### 3.5. Proje Ekran Görüntüleri
 
-![Anasayfa](ekran_görüntüleri/2.png)
+![Mobil Anasayfa](1.png)
 
-![Soru](ekran_görüntüleri/3.png)
+![Anasayfa](2.png)
+
+![Soru](3.png)
 
 ## 4. Sonuçlar ve Tartışma
+
+Proje standart mobil uygulama olarak başlamıştır. Bu şekilde geliştirmenin yavaş ilerlediği görüldüğünde PWA yapılması kararlaştırılmıştır. Bu karar sonucunda çeşitli cihazlarda kullanılabilen bir uygulama geliştirmek mümkün olmuştur. Bununla birilkte cihazında az depolama alanı olan kullanıcılar uygulamayı yüklemeden kullanabilmiş, böylece kullanımın önündeki bir engel ortadan kaldırılmıştır. 
+
+Proje ders çalışan öğrencilere kolaylık sağlamak için yapılmıştır. Yapılan uygulamayı kullanan öğrenciler kullanışlı ve kullanıcı dostu bulmuştur. Matematiksel notasyon desteğini yeterli bulmuşlardır. Matematik öğretmenleri öğrencilere yardım ederken bu uygulamanın işlerine yarayacağını söylemiştir. 
+
+Bazı öğrencilerin uygulamayı ders dışı konuşma için kullandığı gözlemlenmiştir. Bu durumun test aşamasında uygulamayı öğretmenlerin kullanmamasından kaynaklandığı düşünülmektedir.
 
 ## 5. Öneriler
 
