@@ -9,15 +9,25 @@ amaçlanmıştır.
 
 ## 2. Yöntem ve Gereçler
 
+### 2.1. Kullanıcı arayüzü
 
+Sitenin kullanıcı arayüzü tasarlanacak ve Pug kullanarak yazılacaktır. Yaygın kullanılan matematik sembollerinin kolayca girilmesi sağlanacaktır.
+
+### 2.2. Veri tabanı oluşturulması
+
+Cloud Firestore veri tabanı yaratılacak ve soru ve cevaplar burada depolanacaktır. 
+
+### 2.3. Sunucu tarafı kod yazılması
+
+Arayüzün kullanıcıya sunulması, verinin kullanıcı arayüzünde gösterilmesi için Node.js ve Express.js ile sunucu oluşturulacaktır. Benzer şekilde yeni soru ve yanıtların gönderilmesi için yol sunulacaktır. Sunucu veri tabanı ile iletişim kuracak ve yeni soru eklenmesi durumunda kendini güncelleyecektir. 
 
 ## 3. İş-Zaman Tablosu
-|                                           |Eylül|Ekim|Kasım|Aralık|
-|-------------------------------------------|-----|----|-----|------|
-|Kullanılacak teknolojilerin belirlenmesi   |X    |    |     |      |
-|Site kullanıcı arayüzünün tasarlanması     |X    |    |     |      |
-|Site arayüzünün kodlanması                 |X    |X   |     |      |
-|Sitenin sunucu tarafı kodlarının yazılması |     |x   |x    |x     |
+|                                                | Eylül | Ekim | Kasım | Aralık |
+| ---------------------------------------------- | ----- | ---- | ----- | ------ |
+| Kullanılacak teknolojilerin belirlenmesi       | X     |      |       |        |
+| Uygulama kullanıcı arayüzünün tasarlanması     | X     |      |       |        |
+| Uygulama arayüzünün kodlanması                 | X     | X    |       |        |
+| Uygulamanın sunucu tarafı kodlarının yazılması |       | x    | x     | x      |
 
 <div style="page-break-after: always;"></div>
 
@@ -31,6 +41,9 @@ amaçlanmıştır.
 - [Proje Planı](#proje-planı)
   - [1. Amaç ve Kapsam](#1-amaç-ve-kapsam)
   - [2. Yöntem ve Gereçler](#2-yöntem-ve-gereçler)
+    - [2.1. Kullanıcı arayüzü](#21-kullanıcı-arayüzü)
+    - [2.2. Veri tabanı oluşturulması](#22-veri-tabanı-oluşturulması)
+    - [2.3. Sunucu tarafı kod yazılması](#23-sunucu-tarafı-kod-yazılması)
   - [3. İş-Zaman Tablosu](#3-İş-zaman-tablosu)
   - [Proje Adı:](#proje-adı)
   - [İçindekiler](#İçindekiler)
@@ -45,7 +58,7 @@ amaçlanmıştır.
   - [2. Yöntem](#2-yöntem)
     - [2.1 Proje Yapım Basamakları](#21-proje-yapım-basamakları)
   - [3. Bulgular ve Gerçekleşme](#3-bulgular-ve-gerçekleşme)
-    - [3.1 Veritabanı oluşturulması](#31-veritabanı-oluşturulması)
+    - [3.1 Veri tabanı oluşturulması](#31-veri-tabanı-oluşturulması)
       - [a.1. Firebase kurulumu](#a1-firebase-kurulumu)
       - [a.2. Admin SDK kurulumu](#a2-admin-sdk-kurulumu)
     - [3.2. Matematik yazımı](#32-matematik-yazımı)
@@ -68,11 +81,11 @@ amaçlanmıştır.
 
 # Özet
 
-Öğrenciler için ders konusunda çevrimiçi bilgi alışverişi ve yardımlaşma platformları matematik konusunda yetersiz kalmaktadır. Öğrenciler matemetik sembollerini kullanamadığından iletişim zorluğu çekebilir. Öğrenciler bu sorun karşısında elle yazdıkları matematik notasyonunun fotoğrafını çekip gönderme yoluna başvurabilse de bu ideal bir çözüm değildir ve görme engeli olan öğrencilerin erişimine kapalıdır. Bu sebeplerden dolayı projede matematiksel ifadeleri destekleyen bir yardımlaşma ortamı geliştirerek öğrencilerin matematik dersinde başarısına katkıda bulunmak amaçlanmıştır. 
+Öğrenciler için ders konusunda çevrimiçi bilgi alışverişi ve yardımlaşma platformları matematik konusunda yetersiz kalmaktadır. Öğrenciler matematik sembollerini kullanamadığından iletişim zorluğu çekebilir. Öğrenciler bu sorun karşısında elle yazdıkları matematik notasyonunun fotoğrafını çekip gönderme yoluna başvurabilse de bu ideal bir çözüm değildir ve görme engeli olan öğrencilerin erişimine kapalıdır. Bu sebeplerden dolayı projede matematiksel ifadeleri destekleyen bir yardımlaşma ortamı geliştirerek öğrencilerin matematik dersinde başarısına katkıda bulunmak amaçlanmıştır. 
 
 Kullanıcı arayüzü Pug şablon motoru, CSS ve Intercooler.js ile yapılan uygulama PWA standardına uygundur. Bu sebeple mobil kullanıma elverişlidir ve tarayıcı üzerinden veya cihaza kurularak kullanılabilir. Uygulamada kullanıcılar AsciiMath dili ile matematik sembollerini ifade edebilmektedir. Matematik sembollerinin çizimi için MathJax kullanılmıştır. Kullanıcılar soru sorabilmekte ve sorulmuş sorulara cevap verebilmektedir.
 
-Uygulamanın kaynak kodu Node.js ile yazılmış ve Express.js web altyapısı kullanılmıştır. Veritabanı olarak Cloud Firestore tercih edilmiştir. Matematik ifadelerinin çizimi sunucuda yapılarak kullanıcının MathJax kütüphanesini indirmek zorunda kalmasının önüne geçilmiş ve uygulama daha hızlı kılınmıştır. 
+Uygulamanın kaynak kodu Node.js ile yazılmış ve Express.js web altyapısı kullanılmıştır. Veri tabanı olarak Cloud Firestore tercih edilmiştir. Matematik ifadelerinin çizimi sunucuda yapılarak kullanıcının MathJax kütüphanesini indirmek zorunda kalmasının önüne geçilmiş ve uygulama daha hızlı kılınmıştır. 
 
 Kullanıcıların soru sorması ve sorulmuş soruları cevaplandırması için bir uygulama yapılmıştır. Matematiksel notasyon desteği deneyen öğrenciler tarafından yeterli bulunmuştur. Öğrenciler dışında öğretmenler için de öğrencilerinin eğitimini destekleyerek fayda sağlayabilecek bir uygulamadır.
 
@@ -88,7 +101,7 @@ Proje mobil cihazlarda kullanıma uygundur. Kurulum gerektirmeden internet üzer
 
 ### 1.1. Projenin Amacı
 
-Projede öğrencilerin internet üzerinden yardımlaşırken ve bilgi alışverişi yaparken  iletişim zorluğu yaşamasına ve zaman kaybı veya dikkat dağınıklığı sorunlarına çözüm bulmak amaçlanmıştır. 
+Projede öğrencilerin internet üzerinden yardımlaşırken ve bilgi alışverişi yaparken iletişim zorluğu yaşamasına ve zaman kaybı veya dikkat dağınıklığı sorunlarına çözüm bulmak amaçlanmıştır. 
 
 ### 1.2. Node.js
 
@@ -100,8 +113,7 @@ Express.js veya Express, Node.js için özgür açık kaynak kodlu web çatısı
 
 ### 1.5. MathJax
 
-MathJax, matematiksel ifadelerin çizimi için bir JavaScript kütüphanesidir. Girdi olarak TeX, MathML ve AsciiMath; çıktı 
-olarak HTML-CSS, SVG ve MathML formatlarını destekler (Cuellar ve Topping, 2013).
+MathJax, matematiksel ifadelerin çizimi için bir JavaScript kütüphanesidir. Girdi olarak TeX, MathML ve AsciiMath; çıktı olarak HTML-CSS, SVG ve MathML formatlarını destekler (Cuellar ve Topping, 2013).
 
 ### 1.6. Pug
 
@@ -114,7 +126,7 @@ Intercooler.js veya kısaca Intercooler, geliştiricilere kod yazmadan HTML özn
 
 ### 2.1 Proje Yapım Basamakları
 
-__a. Veritabanı oluşturulması__
+__a. Veri tabanı oluşturulması__
 
 - a.1. Firebase kurulumu
 - a.2. Admin SDK kurulumu
@@ -126,39 +138,39 @@ __b. Matematik yazımı__
 
 __c. Web sitesi__
 
-- c.1. Anasayfa yapılması
+- c.1. Ana sayfa yapılması
 - c.2. Soru görüntüleme sayfasının yapılması
 - c.3. Dinamik içeriğin kullanıcıya sunumu
 - c.4. Soru sormak ve cevap vermek için yol oluşturulması
 
 ## 3. Bulgular ve Gerçekleşme
 
-### 3.1 Veritabanı oluşturulması
+### 3.1 Veri tabanı oluşturulması
 
 #### a.1. Firebase kurulumu
 
-Projede Firebase tarafından sunulan belge tabanlı Firestore veritabanı kulllanılmıştır. Firestore'un özellikleri belirli bir şemaya bağlı olmaması ve yalnızca hızlı biçimde yapılabilecek işlemlere izin vermesidir. 
+Projede Firebase tarafından sunulan belge tabanlı Firestore veri tabanı kullanılmıştır. Firestore'un özellikleri belirli bir şemaya bağlı olmaması ve yalnızca hızlı biçimde yapılabilecek işlemlere izin vermesidir. 
 
-Veritabanındaki belgelerin yapısı aşağıdaki gibidir:
+Veri tabanındaki belgelerin yapısı aşağıdaki gibidir:
 
-|Alan    |Tür       |
-|--------|----------|
-|Yazan   |dize      |
-|İçerik  |dize      |
-|Zaman   |zaman     |
-|Yanıtlar|koleksiyon|
+| Alan     | Tür        |
+| -------- | ---------- |
+| Yazan    | dize       |
+| İçerik   | dize       |
+| Zaman    | zaman      |
+| Yanıtlar | koleksiyon |
 
 Her sorunun Yanıtlar koleksiyonu aşağıdaki gibi belgeler içermektedir:
 
-|Alan    |Tür       |
-|--------|----------|
-|Yazan   |dize      |
-|İçerik  |dize      |
-|Zaman   |zaman     |
+| Alan   | Tür   |
+| ------ | ----- |
+| Yazan  | dize  |
+| İçerik | dize  |
+| Zaman  | zaman |
 
 #### a.2. Admin SDK kurulumu
 
-Node.js sunucumuzdan veritabanına erişim sağlayabilmek için Firebase Admin SDK kullanılmıştır. 
+Node.js sunucumuzdan veri tabanına erişim sağlayabilmek için Firebase Admin SDK kullanılmıştır. 
 
 ### 3.2. Matematik yazımı
 
@@ -182,11 +194,11 @@ Her sorunun sayfasında sorunun içeriği, yazan kişi ve verilmiş yanıtlar g�
 
 #### c.3. Dinamik içeriğin kullanıcıya sunumu
 
-Veritabanından soru ve yanıtlar okunup Pug şablonları kullanılarak HTML sayfasına dökülür. Şablon kullanmak metin parçacıklarından sayfa oluşturma gereğini ortadan kaldırır ve kullanıcıların sorularında siteye HTML enjekte etmesine engel olur.
+Veri tabanından soru ve yanıtlar okunup Pug şablonları kullanılarak HTML sayfasına dökülür. Şablon kullanmak metin parçacıklarından sayfa oluşturma gereğini ortadan kaldırır ve kullanıcıların sorularında siteye HTML enjekte etmesine engel olur.
 
 #### c.4. Soru sormak ve cevap vermek için yol oluşturulması
 
-Sayfadan form/submit yoluyla soru sorulabilmektedir. Soruların sunucu tarafından doğrulanır ve gerekli veriyi bulunduruyorsa (yazan, içerik) veritabanında kayıt oluşturulur.
+Sayfadan form/submit yoluyla soru sorulabilmektedir. Soruların sunucu tarafından doğrulanır ve gerekli veriyi bulunduruyorsa (yazan, içerik) veri tabanında kayıt oluşturulur.
 
 ### 3.4. Proje Kodlarının Açıklanması
 
@@ -209,7 +221,7 @@ admin.initializeApp({
 const db = admin.firestore()
 ```
 İlk iş olarak kullanılacak kütüphaneler belirtilir.
-Firebase admin sertifikası ortam değişkeninden okunur. Firebase ile bağlantı kurulur ve veritabanına erişilir. 
+Firebase admin sertifikası ortam değişkeninden okunur. Firebase ile bağlantı kurulur ve veri tabanına erişilir. 
 
 ```javascript
 let yanitlarDepo = new Map()
@@ -229,7 +241,7 @@ async function belgeUyarla(belge: DocumentSnapshot) {
   }
 }
 ```
-`belgeUyarla` fonksiyonunun amacı veritabanındaki belgelerden sayfada gösterilecek bilgileri çıkartmaktır. Bu fonksiyon ileride kullanılacaktır.
+`belgeUyarla` fonksiyonunun amacı veri tabanındaki belgelerden sayfada gösterilecek bilgileri çıkartmaktır. Bu fonksiyon ileride kullanılacaktır.
 
 ```javascript
 let sorular
@@ -268,7 +280,7 @@ app.get("/sorular", (req, res) => {
   })
 })
 ```
-Anasayfadan istek gönderildiğinde veritabanından sorular alınır. Sorulardaki matematik ifadeleri çizilir. Son olarak sayfa oluşturulur ve kullanıcıya gönderilir.
+Anasayfadan istek gönderildiğinde veri tabanından sorular alınır. Sorulardaki matematik ifadeleri çizilir. Son olarak sayfa oluşturulur ve kullanıcıya gönderilir.
 ```javascript
 app.get("/soru", (req, res) => {
   db.collection("Sorular")
@@ -317,7 +329,7 @@ app.post("/yanitla", (req, res) => {
   res.redirect("back")
 })
 ```
-Kullanıcı soru veya cevap yazıp "Gönder" butonuna bastığı zaman POST isteği yapılır. Sunucu bunun üzerine öncelikle istekte doğru verinin bulunup bulunmadığını kontrol der. Yok ise 400 (Bad Request) hatası ile cevap verir. Aksi takdirde soru veritabanına eklenir ve kullanıcı geri yönlendirilir.
+Kullanıcı soru veya cevap yazıp "Gönder" butonuna bastığı zaman POST isteği yapılır. Sunucu bunun üzerine öncelikle istekte doğru verinin bulunup bulunmadığını kontrol der. Yok ise 400 (Bad Request) hatası ile cevap verir. Aksi takdirde soru veri tabanına eklenir ve kullanıcı geri yönlendirilir.
 
 #### girdi.pug
 ```pug
@@ -357,7 +369,7 @@ form.girdi.card(action=postTo method="POST")
     }
     
 ```
-Sunulacak düğmeler sunucu Javascript kodunda tanımlanmıştır. `for` direktifi ile düğmelerin HTML kodu oluşturulmuştur. Her düğme tıklandığında belirli bir sembolün AsciiMath kodunu imlecin konumuna girer. Bu sayede kullanıcılar bu kodları ezberlemek zorunda kalmaz.
+Sunulacak düğmeler sunucu JavaScript kodunda tanımlanmıştır. `for` direktifi ile düğmelerin HTML kodu oluşturulmuştur. Her düğme tıklandığında belirli bir sembolün AsciiMath kodunu imlecin konumuna girer. Bu sayede kullanıcılar bu kodları ezberlemek zorunda kalmaz.
 
 ### 3.5. Proje Ekran Görüntüleri
 
@@ -369,7 +381,7 @@ Sunulacak düğmeler sunucu Javascript kodunda tanımlanmıştır. `for` direkti
 
 ## 4. Sonuçlar ve Tartışma
 
-Proje standart mobil uygulama olarak başlamıştır. Bu şekilde geliştirmenin yavaş ilerlediği görüldüğünde PWA yapılması kararlaştırılmıştır. Bu karar sonucunda çeşitli cihazlarda kullanılabilen bir uygulama geliştirmek mümkün olmuştur. Bununla birilkte cihazında az depolama alanı olan kullanıcılar uygulamayı yüklemeden kullanabilmiş, böylece kullanımın önündeki bir engel ortadan kaldırılmıştır. 
+Proje standart mobil uygulama olarak başlamıştır. Bu şekilde geliştirmenin yavaş ilerlediği görüldüğünde PWA yapılması kararlaştırılmıştır. Bu karar sonucunda çeşitli cihazlarda kullanılabilen bir uygulama geliştirmek mümkün olmuştur. Bununla birlikte cihazında az depolama alanı olan kullanıcılar uygulamayı yüklemeden kullanabilmiş, böylece kullanımın önündeki bir engel ortadan kaldırılmıştır. 
 
 Proje ders çalışan öğrencilere kolaylık sağlamak için yapılmıştır. Yapılan uygulamayı kullanan öğrenciler kullanışlı ve kullanıcı dostu bulmuştur. Matematiksel notasyon desteğini yeterli bulmuşlardır. Matematik öğretmenleri öğrencilere yardım ederken bu uygulamanın işlerine yarayacağını söylemiştir. 
 
