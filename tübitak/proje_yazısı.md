@@ -9,7 +9,7 @@ amaçlanmıştır.
 
 ### 2.1. Kullanıcı arayüzü
 
-Sitenin kullanıcı arayüzü tasarlanacak ve Pug kullanarak yazılacaktır. Yaygın kullanılan matematik sembollerinin kolayca girilmesi sağlanacaktır.
+Sitenin kullanıcı arayüzü tasarlanacak ve Pug kullanarak yazılacaktır. Yaygın kullanılan matematik sembollerinin kolayca girilmesi için düğmeler oluşturulacak ve kod yazılacaktır.
 
 ### 2.2. Veri tabanı oluşturulması
 
