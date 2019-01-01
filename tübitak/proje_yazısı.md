@@ -1,19 +1,56 @@
-# Proje Planı
+<style>
+p, h1, h2, h3, h4, h5, h6, table, ul, ol, a {
+  font-size: 12pt !important;
+  font-family: 'Times New Roman', serif;
+  text-align: justify;
+  line-height: 1em;
+  color: black !important;
+}
+p {
+  text-indent: 1em;
+}
+table {
+  page-break-inside: avoid;
+}
+th, td {
+  border: 1px solid black !important;
+}
+ul {
+  line-height: 1.5em;
+}
+pre[data-role="codeBlock"] {
+  font-family: 'IBM Plex Mono', monospace;
+}
+pre[data-role="codeBlock"] > * {
+  font-family: 'IBM Plex Mono', monospace;
+}
+.markdown-preview {
+  padding: 0 2.5cm !important;
+}
+
+.sources > * {
+  text-indent: -1em !important;
+  padding-left: 1em ;
+}
+</style>
+
+<!-- i love myself -->
+
+# PROJE PLANI
 
 ## 1. Amaç ve Kapsam
 
-Öğrencilerin yardımlaşması için matematiksel notasyon desteği bulunduran bir uygulama yapılacaktır. Sıradan soru-cevap platformlarındaki iletişim zorluğu ve erişilebilir olmama sorunlarının önüne geçerek öğrencilere ve matematik öğretmenlerine yardımlaşma konusunda destek olmak
-amaçlanmıştır. 
+Öğrencilerin yardımlaşması için matematiksel notasyon desteği bulunduran bir uygulama yapılacaktır. Sıradan soru-cevap platformlarındaki iletişim zorluğu ve erişilebilir olmama sorunlarının önüne geçerek öğrencilere ve matematik öğretmenlerine yardımlaşma konusunda destek olmak amaçlanmıştır. 
 
 ## 2. Yöntem ve Gereçler
 
 ### 2.1. Kullanıcı arayüzü
 
-Sitenin kullanıcı arayüzü tasarlanacak ve Pug kullanarak yazılacaktır. Yaygın kullanılan matematik sembollerinin kolayca girilmesi için düğmeler oluşturulacak ve kod yazılacaktır.
+Sitenin kullanıcı arayüzü tasarlanacak ve Pug kullanarak yazılacaktır. Yaygın kullanılan matematik sembollerinin kolayca girilmesini sağlayan düğmeler oluşturulacaktır.
 
 ### 2.2. Veri tabanı oluşturulması
 
-Cloud Firestore veri tabanı yaratılacak ve soru ve cevaplar burada depolanacaktır. 
+Cloud Firestore veri tabanı yaratılacak, soru ve cevaplar burada depolanacaktır. 
 
 ### 2.3. Sunucu tarafı kod yazılması
 
@@ -25,7 +62,7 @@ Arayüzün kullanıcıya sunulması, verinin kullanıcı arayüzünde gösterilm
 | Kullanılacak teknolojilerin belirlenmesi       | X     |      |       |        |
 | Uygulama kullanıcı arayüzünün tasarlanması     | X     |      |       |        |
 | Uygulama arayüzünün kodlanması                 | X     | X    |       |        |
-| Uygulamanın sunucu tarafı kodlarının yazılması |       | x    | x     | x      |
+| Uygulamanın sunucu tarafı kodlarının yazılması |       | X    | X     | X      |
 
 ## Kaynaklar:
 
@@ -42,13 +79,27 @@ Gross, C., intercooler.js. 30 Aralık 2018 tarihinde erişildi. https://intercoo
 
 <div style="page-break-after: always;"></div>
 
+# PROJE ÖZETİ
+
+Öğrenciler için ders konusunda çevrimiçi bilgi alışverişi ve yardımlaşma platformları matematik konusunda yetersiz kalmaktadır. Öğrenciler matematik sembollerini kullanamadığından iletişim zorluğu çekebilir. Öğrenciler bu sorun karşısında elle yazdıkları matematik notasyonunun fotoğrafını çekip gönderme yoluna başvurabilse de bu ideal bir çözüm değildir ve görme engeli olan öğrencilerin erişimine kapalıdır. Bu sebeplerden dolayı projede matematiksel ifadeleri destekleyen bir yardımlaşma ortamı geliştirerek öğrencilerin matematik dersinde başarısına katkıda bulunmak amaçlanmıştır. 
+
+Kullanıcı arayüzü Pug şablon motoru, CSS ve Intercooler.js ile yapılan uygulama PWA standardına uygundur. Bu sebeple mobil kullanıma elverişlidir ve tarayıcı üzerinden veya cihaza kurularak kullanılabilir. Uygulamada kullanıcılar AsciiMath dili ile matematik sembollerini ifade edebilmektedir. Matematik sembollerinin çizimi için MathJax kullanılmıştır. Kullanıcılar soru sorabilmekte ve sorulmuş sorulara cevap verebilmektedir.
+
+Uygulamanın kaynak kodu Node.js ile yazılmış ve Express.js web altyapısı kullanılmıştır. Veri tabanı olarak Cloud Firestore tercih edilmiştir. Matematik ifadelerinin çizimi sunucuda yapılarak kullanıcının MathJax kütüphanesini indirmek zorunda kalmasının önüne geçilmiş ve uygulama daha hızlı kılınmıştır. 
+
+Kullanıcıların soru sorması ve sorulmuş soruları cevaplandırması için bir uygulama yapılmıştır. Matematiksel notasyon desteği deneyen öğrenciler tarafından yeterli bulunmuştur. Öğrenciler dışında öğretmenler için de öğrencilerinin eğitimini destekleyerek fayda sağlayabilecek bir uygulamadır.
+
+**Anahtar Kelimeler:** Matematik, eğitim, öğrenci, yardımlaşma, soru-cevap, notasyon 
+
+<div style="page-break-after: always;"></div>
+
 ## Proje Adı:
 
 **MatMS: Matematik Dersinde Öğrenciler Arasında Yardımlaşma Aracı**
 
 ## İçindekiler
 
-- [Proje Planı](#proje-planı)
+- [PROJE PLANI](#proje-plani)
   - [1. Amaç ve Kapsam](#1-amaç-ve-kapsam)
   - [2. Yöntem ve Gereçler](#2-yöntem-ve-gereçler)
     - [2.1. Kullanıcı arayüzü](#21-kullanıcı-arayüzü)
@@ -56,9 +107,9 @@ Gross, C., intercooler.js. 30 Aralık 2018 tarihinde erişildi. https://intercoo
     - [2.3. Sunucu tarafı kod yazılması](#23-sunucu-tarafı-kod-yazılması)
   - [3. İş-Zaman Tablosu](#3-İş-zaman-tablosu)
   - [Kaynaklar:](#kaynaklar)
+- [PROJE ÖZETİ](#proje-Özetİ)
   - [Proje Adı:](#proje-adı)
   - [İçindekiler](#İçindekiler)
-  - [Özet](#Özet)
   - [1. Giriş](#1-giriş)
     - [1.1. Projenin Amacı](#11-projenin-amacı)
     - [1.2. Node.js](#12-nodejs)
@@ -90,15 +141,6 @@ Gross, C., intercooler.js. 30 Aralık 2018 tarihinde erişildi. https://intercoo
 
 <div style="page-break-after: always;"></div>
 
-## Özet
-
-Öğrenciler için ders konusunda çevrimiçi bilgi alışverişi ve yardımlaşma platformları matematik konusunda yetersiz kalmaktadır. Öğrenciler matematik sembollerini kullanamadığından iletişim zorluğu çekebilir. Öğrenciler bu sorun karşısında elle yazdıkları matematik notasyonunun fotoğrafını çekip gönderme yoluna başvurabilse de bu ideal bir çözüm değildir ve görme engeli olan öğrencilerin erişimine kapalıdır. Bu sebeplerden dolayı projede matematiksel ifadeleri destekleyen bir yardımlaşma ortamı geliştirerek öğrencilerin matematik dersinde başarısına katkıda bulunmak amaçlanmıştır. 
-
-Kullanıcı arayüzü Pug şablon motoru, CSS ve Intercooler.js ile yapılan uygulama PWA standardına uygundur. Bu sebeple mobil kullanıma elverişlidir ve tarayıcı üzerinden veya cihaza kurularak kullanılabilir. Uygulamada kullanıcılar AsciiMath dili ile matematik sembollerini ifade edebilmektedir. Matematik sembollerinin çizimi için MathJax kullanılmıştır. Kullanıcılar soru sorabilmekte ve sorulmuş sorulara cevap verebilmektedir.
-
-Uygulamanın kaynak kodu Node.js ile yazılmış ve Express.js web altyapısı kullanılmıştır. Veri tabanı olarak Cloud Firestore tercih edilmiştir. Matematik ifadelerinin çizimi sunucuda yapılarak kullanıcının MathJax kütüphanesini indirmek zorunda kalmasının önüne geçilmiş ve uygulama daha hızlı kılınmıştır. 
-
-Kullanıcıların soru sorması ve sorulmuş soruları cevaplandırması için bir uygulama yapılmıştır. Matematiksel notasyon desteği deneyen öğrenciler tarafından yeterli bulunmuştur. Öğrenciler dışında öğretmenler için de öğrencilerinin eğitimini destekleyerek fayda sağlayabilecek bir uygulamadır.
 
 ## 1. Giriş
 
@@ -171,8 +213,9 @@ Veri tabanındaki belgelerin yapısı aşağıdaki gibidir:
 | Zaman    | zaman      |
 | Yanıtlar | koleksiyon |
 
+<div class="noindent">
 **Tablo 1.** _Veritabanında soru kayıtlarının yapısı_
-
+</div>
 Her sorunun Yanıtlar koleksiyonu aşağıdaki gibi belgeler içermektedir:
 
 | Alan   | Tür   |
@@ -181,8 +224,9 @@ Her sorunun Yanıtlar koleksiyonu aşağıdaki gibi belgeler içermektedir:
 | İçerik | dize  |
 | Zaman  | zaman |
 
-**Tablo 1.** _Veritabanında yanıt kayıtlarının yapısı_
-
+<div class="noindent">
+**Tablo 2.** _Veritabanında yanıt kayıtlarının yapısı_
+</div>
 #### a.2. Admin SDK kurulumu
 
 Node.js sunucumuzdan veri tabanına erişim sağlayabilmek için Firebase Admin SDK kullanılmıştır. 
@@ -390,15 +434,27 @@ Sunulacak düğmeler sunucu JavaScript kodunda tanımlanmıştır. `for` direkti
 
 ![Mobil Anasayfa](1.png)
 
+<div class="noindent">
+
 **Görsel 1.** _Mobil anasayfa_
+
+</div>
 
 ![Anasayfa](2.png)
 
+<div class="noindent">
+
 **Görsel 2.** _Anasayfa_
+
+</div>
 
 ![Soru](3.png)
 
+<div class="noindent">
+
 **Görsel 3.** _Soru sayfası_
+
+</div>
 
 ## 4. Sonuçlar ve Tartışma
 
@@ -425,6 +481,8 @@ Yeni sorular soruldukça uygulamanın canlı olarak bu soruları göstermesi sa�
 
 ## Kaynakça
 
+<div class="sources">
+
 Çalışkan, T., & Çınar, S. (2010). Akran Desteği: Öğrencilerin Sınıf Ortamı Ve Uygulama Alanlarında Birbirleriyle Yardımlaşma 
 Durumlarının Değerlendirilmesi. _Maltepe Üniversitesi Hemşirelik Bilim ve Sanatı Dergisi, Sempozyum Özel Sayısı_, 226-233.
 
@@ -439,3 +497,5 @@ Gross, C., intercooler.js. 30 Aralık 2018 tarihinde erişildi. https://intercoo
 Hiwarale, U., Pug.js to make your life easier with HTML templates, itnext. 30 Aralık 2018 tarihinde erişildi. https://itnext.io/pug-js-to-make-your-life-easier-with-html-templates-9c62273626e0
 
  Cuellar, A. ve Topping, P., (2013, Haziran). What you need to know about the Maths Stack. XML London'da sunulan bildiri. Erişim adresi: https://xmllondon.com/2013/xmllondon-2013-proceedings.pdf#page=63
+
+</div>
