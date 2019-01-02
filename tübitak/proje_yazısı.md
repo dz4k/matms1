@@ -207,8 +207,11 @@ Veri tabanındaki belgelerin yapısı aşağıdaki gibidir:
 | Yanıtlar | koleksiyon |
 
 <div class="noindent">
+
 **Tablo 1.** _Veritabanında soru kayıtlarının yapısı_
+
 </div>
+
 Her sorunun Yanıtlar koleksiyonu aşağıdaki gibi belgeler içermektedir:
 
 | Alan   | Tür   |
@@ -218,8 +221,11 @@ Her sorunun Yanıtlar koleksiyonu aşağıdaki gibi belgeler içermektedir:
 | Zaman  | zaman |
 
 <div class="noindent">
+
 **Tablo 2.** _Veritabanında yanıt kayıtlarının yapısı_
+
 </div>
+
 #### a.2. Admin SDK kurulumu
 
 Node.js sunucumuzdan veri tabanına erişim sağlayabilmek için Firebase Admin SDK kullanılmıştır. 
