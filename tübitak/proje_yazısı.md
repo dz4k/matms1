@@ -93,21 +93,14 @@ Kullanıcıların soru sorması ve sorulmuş soruları cevaplandırması için b
 
 <div style="page-break-after: always;"></div>
 
+# PROJE RAPORU
+
 ## Proje Adı:
 
 **MatMS: Matematik Dersinde Öğrenciler Arasında Yardımlaşma Aracı**
 
 ## İçindekiler
-
-- [PROJE PLANI](#proje-plani)
-  - [1. Amaç ve Kapsam](#1-amaç-ve-kapsam)
-  - [2. Yöntem ve Gereçler](#2-yöntem-ve-gereçler)
-    - [2.1. Kullanıcı arayüzü](#21-kullanıcı-arayüzü)
-    - [2.2. Veri tabanı oluşturulması](#22-veri-tabanı-oluşturulması)
-    - [2.3. Sunucu tarafı kod yazılması](#23-sunucu-tarafı-kod-yazılması)
-  - [3. İş-Zaman Tablosu](#3-İş-zaman-tablosu)
-  - [Kaynaklar:](#kaynaklar)
-- [PROJE ÖZETİ](#proje-Özetİ)
+- [PROJE RAPORU](#proje-raporu)
   - [Proje Adı:](#proje-adı)
   - [İçindekiler](#İçindekiler)
   - [1. Giriş](#1-giriş)
