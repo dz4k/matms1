@@ -28,17 +28,33 @@ html(lang="tr")
     title MatMS
 body
     header
+      #verytop
+        a.addtohome.hidden(id="add-to-home" onclick="addToHome()") + Ana Ekrana Ekle
+        button#btn Soru sor
       h1 MatMS
-      a.hidden(id="add-to-home" onclick="addToHome()") + Ana Ekrana Ekle
+      #girdi.hidden
+        +girdi("/soru")
       #topbar
         block topbar
     #container
       #content
         block content
+
+
     script
       include ../../node_modules/jquery/dist/jquery.min.js
     script
       include ../../node_modules/intercooler/dist/intercooler.js
+    script.
+      let btn = document.querySelector("#btn")
+      let girdi = document.querySelector("#girdi")
+
+      btn.onclick = () => {
+        girdi.classList.contains("hidden")
+          ? girdi.classList.remove("hidden")
+          : girdi.classList.add("hidden")
+      }
+    
     script.
       //This is the "Offline copy of pages" service worker
 
