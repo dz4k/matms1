@@ -2,7 +2,6 @@ import * as express from "express"
 import * as admin from 'firebase-admin'
 import { QuerySnapshot, DocumentData, DocumentSnapshot } from "@google-cloud/firestore"
 import * as bodyParser from "body-parser"
-import * as mjpage from "mathjax-node-page"
 import * as pug from "pug"
 import * as path from "path"
 
@@ -60,31 +59,23 @@ let soruTemplate = pug.compileFile(__dirname + `${s}views${s}soru.pug`)
 
 app.get("/", (req, res) => {
   let compiled = indexTemplate({})
-  mjpage.mjpage(compiled,
-    { format: ["AsciiMath"], output: "html" },
-    {}, mjrendered => {
-      res.send(mjrendered)
-    })
+  let rendered = compiled // TODO:
+  res.send(rendered)
 })
 
 app.get("/sorular", (req, res) => {
   if (!sorular) return res.send("")
   let compiled = sorularTemplate({ sorular: sorular })
-  mjpage.mjpage(compiled,
-    { format: ["AsciiMath"], output: "html", cssInline: false },
-    { linebreaks: true },
-    mjrendered => {
-      res.send(mjrendered)
-    })
+  let rendered = compiled // TODO:
 })
 
 app.get("/soru", (req, res) => {
   db.collection("Sorular")
     .doc(req.query.id).get().then(async (snapshot) => {
       if (!snapshot.data) return res.status(404);
-      let rendered = soruTemplate({ soru: await belgeUyarla(snapshot) })
-      mjpage.mjpage(rendered,
-        { format: ["AsciiMath"], output: "html" }, {}, sonuç => res.send(sonuç))
+      let compiled = soruTemplate({ soru: await belgeUyarla(snapshot) })
+      let rendered = compiled // TODO:
+      res.send(compiled)
     })
 })
 
