@@ -23,6 +23,7 @@
     "intercooler": "^1.2.1",
     "jquery": "^3.3.1",
     "mathjax-node-page": "^3.0.1",
+    "mathquill": "^0.10.1-a",
     "path": "^0.12.7",
     "pug": "^2.0.3"
   },
