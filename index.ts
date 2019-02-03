@@ -59,14 +59,13 @@ let soruTemplate = pug.compileFile(__dirname + `${s}views${s}soru.pug`)
 
 app.get("/", (req, res) => {
   let compiled = indexTemplate({})
-  let rendered = compiled // TODO:
-  res.send(rendered)
+  res.send(compiled)
 })
 
 app.get("/sorular", (req, res) => {
   if (!sorular) return res.send("")
   let compiled = sorularTemplate({ sorular: sorular })
-  let rendered = compiled // TODO:
+  res.send(compiled)
 })
 
 app.get("/soru", (req, res) => {
@@ -74,7 +73,6 @@ app.get("/soru", (req, res) => {
     .doc(req.query.id).get().then(async (snapshot) => {
       if (!snapshot.data) return res.status(404);
       let compiled = soruTemplate({ soru: await belgeUyarla(snapshot) })
-      let rendered = compiled // TODO:
       res.send(compiled)
     })
 })

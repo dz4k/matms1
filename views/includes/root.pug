@@ -55,7 +55,13 @@ body
           ? girdi.classList.remove("hidden")
           : girdi.classList.add("hidden")
       }
-    
+
+      // MathQuill
+      
+      let MQ = MathQuill.getInterface(2)
+      let girdi = document.querySelector("#icerik")
+      let input = MQ.MathField(girdi, {})
+
     script.
       //This is the "Offline copy of pages" service worker
 
@@ -88,3 +94,5 @@ body
       function addToHome() {
         addToHomeEvt.prompt()
       }
+
+      // thanks, PWA Builder!

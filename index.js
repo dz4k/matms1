@@ -11,7 +11,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express = require("express");
 const admin = require("firebase-admin");
 const bodyParser = require("body-parser");
-const mjpage = require("mathjax-node-page");
 const pug = require("pug");
 const path = require("path");
 let serviceAccount = process.env.SERVICEACCOUNT[0] == "{" ?
@@ -53,25 +52,21 @@ let sorularTemplate = pug.compileFile(__dirname + `${s}views${s}sorular.pug`);
 let soruTemplate = pug.compileFile(__dirname + `${s}views${s}soru.pug`);
 app.get("/", (req, res) => {
     let compiled = indexTemplate({});
-    mjpage.mjpage(compiled, { format: ["AsciiMath"], output: "html" }, {}, mjrendered => {
-        res.send(mjrendered);
-    });
+    res.send(compiled);
 });
 app.get("/sorular", (req, res) => {
     if (!sorular)
         return res.send("");
     let compiled = sorularTemplate({ sorular: sorular });
-    mjpage.mjpage(compiled, { format: ["AsciiMath"], output: "html", cssInline: false }, { linebreaks: true }, mjrendered => {
-        res.send(mjrendered);
-    });
+    res.send(compiled);
 });
 app.get("/soru", (req, res) => {
     db.collection("Sorular")
         .doc(req.query.id).get().then((snapshot) => __awaiter(this, void 0, void 0, function* () {
         if (!snapshot.data)
             return res.status(404);
-        let rendered = soruTemplate({ soru: yield belgeUyarla(snapshot) });
-        mjpage.mjpage(rendered, { format: ["AsciiMath"], output: "html" }, {}, sonuç => res.send(sonuç));
+        let compiled = soruTemplate({ soru: yield belgeUyarla(snapshot) });
+        res.send(compiled);
     }));
 });
 app.post("/soru", (req, res) => {
