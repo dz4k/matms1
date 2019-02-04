@@ -11,18 +11,3 @@ block topbar
 block content
   
   #sorular(ic-get-from="/sorular" ic-poll="10s" ic-trigger-on="load")
-
-  script.
-    let btn = document.querySelector("#btn")
-    let girdi = document.querySelector("#girdi")
-
-    btn.onclick = () => {
-      girdi.classList.contains("hidden")
-        ? girdi.classList.remove("hidden")
-        : girdi.classList.add("hidden")
-    }
-    
-  style.
-
-
-
