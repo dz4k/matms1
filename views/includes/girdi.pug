@@ -1,22 +1,20 @@
 mixin girdi(postTo)
   -
     let dugmeler = [
-      {i: "\\`\\`", g: "``"},
       {i: "a^b", g: "^(b)"},
       {i: "a_b", g: "_(b)"},
-      {i: "rootab", g: "root(a)(b)"},
-      {i: "a^@", g: "^@"},
-      {i: "veca", g: "veca"},
-      {i: "Delta", g: "Delta"},
-      {i: "=>", g: "=>"},
-      {i: "{::}^({::}_int)", g: "int"}
+      {i: "rootab", g: "\\\\root{a}{b}"},
+      {i: "a\\deg", g: "\\\\deg"},
+      {i: "\Delta", g: "\Delta"},
+      {i: "=>", g: "\\\\rArr"},
+      {i: "\\int", g: "\\\\int"}
     ]
   form.girdi.card(action=postTo method="POST")
     #dugmeler
       ul(id="menu-closed")
         for dugme in dugmeler
           li.dugme
-            a.mat(href="#" onclick!="sembolGir('"+dugme.g+"')")= dugme.i
+            a.mat(href="#" onclick!="mathfield.write('"+dugme.g+"')")= dugme.i
 
     input(type="submit" value="Gönder")
     input.text#yazan(type="text" name="Yazan" placeholder="Adınız")
