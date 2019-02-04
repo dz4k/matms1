@@ -59,8 +59,8 @@ body
       // MathQuill
       
       let MQ = MathQuill.getInterface(2)
-      let girdi = document.querySelector("#icerik")
-      let input = MQ.MathField(girdi, {})
+      let girdiIcerik = document.querySelector("#icerik")
+      let input = MQ.MathField(girdiIcerik, {})
       let staticMath = document.querySelectorAll(".mat")
       staticMath.map((el) => MQ.StaticMath(el))
 
