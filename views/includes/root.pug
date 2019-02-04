@@ -61,6 +61,8 @@ body
       let MQ = MathQuill.getInterface(2)
       let girdi = document.querySelector("#icerik")
       let input = MQ.MathField(girdi, {})
+      let staticMath = document.querySelectorAll(".mat")
+      staticMath.map((el) => MQ.StaticMath(el))
 
     script.
       //This is the "Offline copy of pages" service worker
