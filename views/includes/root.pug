@@ -28,6 +28,8 @@ html(lang="tr")
     
     title MatMS
 body
+    script.
+        let mathfield
     header
       #verytop
         button#btn Soru sor
@@ -61,7 +63,7 @@ body
       
       let MQ = MathQuill.getInterface(2)
       let girdiIcerik = document.querySelector("#icerik")
-      let input = MQ.MathField(girdiIcerik, {})
+      mathfield = MQ.MathField(girdiIcerik, {})
       let staticMath = document.querySelectorAll(".mat")
       staticMath.forEach((el) => MQ.StaticMath(el))
 
