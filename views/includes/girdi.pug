@@ -16,7 +16,7 @@ mixin girdi(postTo)
       ul(id="menu-closed")
         for dugme in dugmeler
           li.dugme
-            a(href="#" onclick!="sembolGir('"+dugme.g+"')") `#{dugme.i}`
+            a.mat(href="#" onclick!="sembolGir('"+dugme.g+"')")= dugme.i
 
     input(type="submit" value="Gönder")
     input.text#yazan(type="text" name="Yazan" placeholder="Adınız")
