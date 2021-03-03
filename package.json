@@ -24,7 +24,7 @@
     "jquery": "^3.4.0",
     "mathjax-node-page": "^3.0.1",
     "path": "^0.12.7",
-    "pug": "^2.0.3"
+    "pug": "^3.0.1"
   },
   "bugs": {
     "url": "https://github.com/deniz-a/matms/issues"
